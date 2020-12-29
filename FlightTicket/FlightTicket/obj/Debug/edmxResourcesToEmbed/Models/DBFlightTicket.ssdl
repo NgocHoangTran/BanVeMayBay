@@ -1,0 +1,346 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A6C0B2_Nhom13FlightTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChiTietChuyenBay">
+    <Key>
+      <PropertyRef Name="MaCB" />
+      <PropertyRef Name="SanBayTrungGian" />
+    </Key>
+    <Property Name="MaCB" Type="int" Nullable="false" />
+    <Property Name="SanBayTrungGian" Type="int" Nullable="false" />
+    <Property Name="ThoiGianDung" Type="int" Nullable="false" />
+    <Property Name="TGToiThieu" Type="int" Nullable="false" />
+    <Property Name="TGToiDa" Type="int" Nullable="false" />
+    <Property Name="NgayDatChamNhat" Type="int" Nullable="false" />
+    <Property Name="NgayHuyChamNhat" Type="int" Nullable="false" />
+    <Property Name="GhiChu" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ChoNgoi">
+    <Key>
+      <PropertyRef Name="MaGhe" />
+    </Key>
+    <Property Name="MaGhe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaCB" Type="int" />
+    <Property Name="TinhTrang" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChuyenBay">
+    <Key>
+      <PropertyRef Name="MaCB" />
+    </Key>
+    <Property Name="MaCB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SanBayDen" Type="int" />
+    <Property Name="SanBayDi" Type="int" />
+    <Property Name="NgayKhoiHanh" Type="date" Nullable="false" />
+    <Property Name="GioKhoiHanh" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ThoiGianBay" Type="int" Nullable="false" />
+    <Property Name="ThoiGianDungToiThieu" Type="int" Nullable="false" />
+    <Property Name="SoGheConLai" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoanhThuBanVe">
+    <Key>
+      <PropertyRef Name="MaDoanhThu" />
+    </Key>
+    <Property Name="MaDoanhThu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaCB" Type="int" />
+    <Property Name="SoVe" Type="int" Nullable="false" />
+    <Property Name="TyLe" Type="real" Nullable="false" />
+    <Property Name="DoanhThu" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DoanhThuNam">
+    <Key>
+      <PropertyRef Name="MaDoanhThuNam" />
+    </Key>
+    <Property Name="MaDoanhThuNam" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Thang" Type="int" Nullable="false" />
+    <Property Name="SoChuyenBay" Type="int" Nullable="false" />
+    <Property Name="DoanhThu" Type="int" Nullable="false" />
+    <Property Name="TyLe" Type="real" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DonGia">
+    <Key>
+      <PropertyRef Name="MaCB" />
+      <PropertyRef Name="MaVe" />
+    </Key>
+    <Property Name="MaCB" Type="int" Nullable="false" />
+    <Property Name="MaVe" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HangVe">
+    <Key>
+      <PropertyRef Name="MaVe" />
+    </Key>
+    <Property Name="MaVe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenVe" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="HangVeCuaChuyenBay">
+    <Key>
+      <PropertyRef Name="MaCB" />
+      <PropertyRef Name="MaVe" />
+    </Key>
+    <Property Name="MaCB" Type="int" Nullable="false" />
+    <Property Name="MaVe" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NguoiDung">
+    <Key>
+      <PropertyRef Name="MaNguoiDung" />
+    </Key>
+    <Property Name="MaNguoiDung" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaiKhoan" Type="varchar" MaxLength="50" />
+    <Property Name="MatKhau" Type="varchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gmail" Type="varchar" MaxLength="50" />
+    <Property Name="SoDT" Type="varchar" MaxLength="10" />
+    <Property Name="CMND" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="PhanQuyen" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SanBay">
+    <Key>
+      <PropertyRef Name="MaSB" />
+    </Key>
+    <Property Name="MaSB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenSB" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="VeChuyenBay">
+    <Key>
+      <PropertyRef Name="MaVeCB" />
+    </Key>
+    <Property Name="MaVeCB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MaCB" Type="int" />
+    <Property Name="MaVe" Type="int" />
+    <Property Name="MaNguoiDung" Type="int" />
+    <Property Name="NgayDat" Type="date" Nullable="false" />
+    <Property Name="MaGhe" Type="int" />
+  </EntityType>
+  <Association Name="FK__ChiTietCh__SanBa__367C1819">
+    <End Role="SanBay" Type="Self.SanBay" Multiplicity="1" />
+    <End Role="ChiTietChuyenBay" Type="Self.ChiTietChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanBay">
+        <PropertyRef Name="MaSB" />
+      </Principal>
+      <Dependent Role="ChiTietChuyenBay">
+        <PropertyRef Name="SanBayTrungGian" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChiTietChu__MaCB__3587F3E0">
+    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="1" />
+    <End Role="ChiTietChuyenBay" Type="Self.ChiTietChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenBay">
+        <PropertyRef Name="MaCB" />
+      </Principal>
+      <Dependent Role="ChiTietChuyenBay">
+        <PropertyRef Name="MaCB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChoNgoi__MaCB__2EDAF651">
+    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="0..1" />
+    <End Role="ChoNgoi" Type="Self.ChoNgoi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenBay">
+        <PropertyRef Name="MaCB" />
+      </Principal>
+      <Dependent Role="ChoNgoi">
+        <PropertyRef Name="MaCB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChuyenBay__SanBa__2739D489">
+    <End Role="SanBay" Type="Self.SanBay" Multiplicity="0..1" />
+    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanBay">
+        <PropertyRef Name="MaSB" />
+      </Principal>
+      <Dependent Role="ChuyenBay">
+        <PropertyRef Name="SanBayDen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ChuyenBay__SanBa__282DF8C2">
+    <End Role="SanBay" Type="Self.SanBay" Multiplicity="0..1" />
+    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanBay">
+        <PropertyRef Name="MaSB" />
+      </Principal>
+      <Dependent Role="ChuyenBay">
+        <PropertyRef Name="SanBayDi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DoanhThuBa__MaCB__45BE5BA9">
+    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="0..1" />
+    <End Role="DoanhThuBanVe" Type="Self.DoanhThuBanVe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenBay">
+        <PropertyRef Name="MaCB" />
+      </Principal>
+      <Dependent Role="DoanhThuBanVe">
+        <PropertyRef Name="MaCB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonGia__MaCB__3D2915A8">
+    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="1" />
+    <End Role="DonGia" Type="Self.DonGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenBay">
+        <PropertyRef Name="MaCB" />
+      </Principal>
+      <Dependent Role="DonGia">
+        <PropertyRef Name="MaCB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DonGia__MaVe__3E1D39E1">
+    <End Role="HangVe" Type="Self.HangVe" Multiplicity="1" />
+    <End Role="DonGia" Type="Self.DonGia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangVe">
+        <PropertyRef Name="MaVe" />
+      </Principal>
+      <Dependent Role="DonGia">
+        <PropertyRef Name="MaVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HangVeCuaC__MaCB__31B762FC">
+    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="1" />
+    <End Role="HangVeCuaChuyenBay" Type="Self.HangVeCuaChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChuyenBay">
+        <PropertyRef Name="MaCB" />
+      </Principal>
+      <Dependent Role="HangVeCuaChuyenBay">
+        <PropertyRef Name="MaCB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HangVeCuaC__MaVe__32AB8735">
+    <End Role="HangVe" Type="Self.HangVe" Multiplicity="1" />
+    <End Role="HangVeCuaChuyenBay" Type="Self.HangVeCuaChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HangVe">
+        <PropertyRef Name="MaVe" />
+      </Principal>
+      <Dependent Role="HangVeCuaChuyenBay">
+        <PropertyRef Name="MaVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VeChuyenB__MaGhe__41EDCAC5">
+    <End Role="ChoNgoi" Type="Self.ChoNgoi" Multiplicity="0..1" />
+    <End Role="VeChuyenBay" Type="Self.VeChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoNgoi">
+        <PropertyRef Name="MaGhe" />
+      </Principal>
+      <Dependent Role="VeChuyenBay">
+        <PropertyRef Name="MaGhe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VeChuyenB__MaNgu__40F9A68C">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
+    <End Role="VeChuyenBay" Type="Self.VeChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="MaNguoiDung" />
+      </Principal>
+      <Dependent Role="VeChuyenBay">
+        <PropertyRef Name="MaNguoiDung" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VeChuyenBay__42E1EEFE">
+    <End Role="DonGia" Type="Self.DonGia" Multiplicity="0..1" />
+    <End Role="VeChuyenBay" Type="Self.VeChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DonGia">
+        <PropertyRef Name="MaCB" />
+        <PropertyRef Name="MaVe" />
+      </Principal>
+      <Dependent Role="VeChuyenBay">
+        <PropertyRef Name="MaCB" />
+        <PropertyRef Name="MaVe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_A6C0B2_Nhom13FlightTicketModelStoreContainer">
+    <EntitySet Name="ChiTietChuyenBay" EntityType="Self.ChiTietChuyenBay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChoNgoi" EntityType="Self.ChoNgoi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChuyenBay" EntityType="Self.ChuyenBay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoanhThuBanVe" EntityType="Self.DoanhThuBanVe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DoanhThuNam" EntityType="Self.DoanhThuNam" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DonGia" EntityType="Self.DonGia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HangVe" EntityType="Self.HangVe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HangVeCuaChuyenBay" EntityType="Self.HangVeCuaChuyenBay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SanBay" EntityType="Self.SanBay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VeChuyenBay" EntityType="Self.VeChuyenBay" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__ChiTietCh__SanBa__367C1819" Association="Self.FK__ChiTietCh__SanBa__367C1819">
+      <End Role="SanBay" EntitySet="SanBay" />
+      <End Role="ChiTietChuyenBay" EntitySet="ChiTietChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChiTietChu__MaCB__3587F3E0" Association="Self.FK__ChiTietChu__MaCB__3587F3E0">
+      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
+      <End Role="ChiTietChuyenBay" EntitySet="ChiTietChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChoNgoi__MaCB__2EDAF651" Association="Self.FK__ChoNgoi__MaCB__2EDAF651">
+      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
+      <End Role="ChoNgoi" EntitySet="ChoNgoi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChuyenBay__SanBa__2739D489" Association="Self.FK__ChuyenBay__SanBa__2739D489">
+      <End Role="SanBay" EntitySet="SanBay" />
+      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ChuyenBay__SanBa__282DF8C2" Association="Self.FK__ChuyenBay__SanBa__282DF8C2">
+      <End Role="SanBay" EntitySet="SanBay" />
+      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DoanhThuBa__MaCB__45BE5BA9" Association="Self.FK__DoanhThuBa__MaCB__45BE5BA9">
+      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
+      <End Role="DoanhThuBanVe" EntitySet="DoanhThuBanVe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonGia__MaCB__3D2915A8" Association="Self.FK__DonGia__MaCB__3D2915A8">
+      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
+      <End Role="DonGia" EntitySet="DonGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DonGia__MaVe__3E1D39E1" Association="Self.FK__DonGia__MaVe__3E1D39E1">
+      <End Role="HangVe" EntitySet="HangVe" />
+      <End Role="DonGia" EntitySet="DonGia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HangVeCuaC__MaCB__31B762FC" Association="Self.FK__HangVeCuaC__MaCB__31B762FC">
+      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
+      <End Role="HangVeCuaChuyenBay" EntitySet="HangVeCuaChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HangVeCuaC__MaVe__32AB8735" Association="Self.FK__HangVeCuaC__MaVe__32AB8735">
+      <End Role="HangVe" EntitySet="HangVe" />
+      <End Role="HangVeCuaChuyenBay" EntitySet="HangVeCuaChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VeChuyenB__MaGhe__41EDCAC5" Association="Self.FK__VeChuyenB__MaGhe__41EDCAC5">
+      <End Role="ChoNgoi" EntitySet="ChoNgoi" />
+      <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VeChuyenB__MaNgu__40F9A68C" Association="Self.FK__VeChuyenB__MaNgu__40F9A68C">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VeChuyenBay__42E1EEFE" Association="Self.FK__VeChuyenBay__42E1EEFE">
+      <End Role="DonGia" EntitySet="DonGia" />
+      <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -141,6 +141,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Employee\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
+    <Compile Include="Areas\Employee\EmployeeQuery\HomeQuery.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,6 +199,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Employee\assets\demo\chart-area-demo.js" />
+    <Content Include="Areas\Employee\assets\demo\chart-bar-demo.js" />
+    <Content Include="Areas\Employee\assets\demo\chart-pie-demo.js" />
+    <Content Include="Areas\Employee\assets\demo\datatables-demo.js" />
+    <Content Include="Areas\Employee\assets\img\error-404-monochrome.svg" />
+    <Content Include="Areas\Employee\css\styles.css" />
+    <Content Include="Areas\Employee\js\scripts.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -223,6 +233,9 @@
     <Content Include="Models\DBFlightTicket.edmx.diagram">
       <DependentUpon>DBFlightTicket.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Employee\Views\web.config" />
+    <Content Include="Areas\Employee\Views\Shared\_LayoutEmployee.cshtml" />
+    <Content Include="Areas\Employee\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -251,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Employee\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
