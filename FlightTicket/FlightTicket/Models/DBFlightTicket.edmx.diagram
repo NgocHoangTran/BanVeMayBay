@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a393aafa3ce4e64862a8d4341a857eb" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.ChiTietChuyenBay" Width="1.5" PointX="8.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.ChoNgoi" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.ChuyenBay" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.DoanhThuBanVe" Width="1.5" PointX="5.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.DoanhThuNam" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.DonGia" Width="1.5" PointX="7.5" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.HangVe" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.NguoiDung" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.SanBay" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A6C0B2_Nhom13FlightTicketModel.VeChuyenBay" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__ChiTietCh__SanBa__367C1819" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__ChiTietChu__MaCB__3587F3E0" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__ChoNgoi__MaCB__2EDAF651" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__VeChuyenB__MaGhe__41EDCAC5" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__ChuyenBay__SanBa__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__ChuyenBay__SanBa__282DF8C2" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__DoanhThuBa__MaCB__45BE5BA9" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__DonGia__MaCB__3D2915A8" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__DonGia__MaVe__3E1D39E1" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__VeChuyenBay__42E1EEFE" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.FK__VeChuyenB__MaNgu__40F9A68C" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A6C0B2_Nhom13FlightTicketModel.HangVeCuaChuyenBay" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
