@@ -25,24 +25,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in ViewBag.veChuyenBays)
-                        {
-                            <tr>
-                                <td>@item.hoTen</td>
-                                <td>@item.MaChuyenBay</td>
-                                <td>@item.SoDienThoai</td>
-                                <td>@item.CMND</td>
-                                <td>@item.hangVe</td>
-                                <td>@item.GiaTien</td>
-                                <td>
-                                    <button style='margin-right:16px' class="btn btn-dark">@Html.ActionLink("Vé chuyến bay", "VeChuyenBay", new { id = item.MaCB })</button>
-                                </td>
-                            </tr>
-                        }
+                        @foreach (var item in ViewBag.dsvcb)
+                            {
+                                <tr>
+                                    <td>@item.HoTen</td>
+                                    <td>@item.MaCB</td>
+                                    <td>@item.SoDienThoai</td>
+                                    <td>@item.CMND</td>
+                                    <td>@item.HangVe</td>
+                                    <td>@item.GiaTien</td>
+                                    <td>
+                                        <button style='margin-right:16px' class="btn btn-dark">@Html.ActionLink("Vé chuyến bay", "VeChuyenBay", new { id = item.MaCB })</button>
+                                    </td>
+                                </tr>
+                            }
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
 

@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Dynamic" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -144,6 +145,7 @@
     <Compile Include="Areas\Employee\Controllers\ChuyenBayController.cs" />
     <Compile Include="Areas\Employee\Controllers\HomeController.cs" />
     <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
+    <Compile Include="Areas\Employee\EmployeeQuery\ChuyenBayQuery.cs" />
     <Compile Include="Areas\Employee\EmployeeQuery\HomeQuery.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -158,6 +160,8 @@
     <Compile Include="Models\ChuyenBay.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DanhSachChuyenBay.cs" />
+    <Compile Include="Models\DanhSachVeChuyenBay.cs" />
     <Compile Include="Models\DB_A6C0B2_Nhom13FlightTicket.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -240,8 +244,6 @@
     <Content Include="Areas\Employee\Views\Shared\_LayoutEmployee.cshtml" />
     <Content Include="Areas\Employee\Views\Home\Index.cshtml" />
     <Content Include="Areas\Employee\Views\Home\LoginEmployee.cshtml" />
-    <Content Include="Areas\Employee\Views\ChuyenBay\DanhSachChuyenBay.cshtml" />
-    <Content Include="Areas\Employee\Views\ChuyenBay\VeChuyenBay.cshtml" />
     <EntityDeploy Include="Models\DB_A6C0B2_Nhom13FlightTicket.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DB_A6C0B2_Nhom13FlightTicket.Designer.cs</LastGenOutput>
@@ -249,6 +251,8 @@
     <Content Include="Models\DB_A6C0B2_Nhom13FlightTicket.edmx.diagram">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Employee\Views\ChuyenBay\DSChuyenBay.cshtml" />
+    <Content Include="Areas\Employee\Views\ChuyenBay\VeChuyenBay.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

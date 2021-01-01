@@ -29,11 +29,12 @@ namespace FlightTicket.Areas.Employee.Controllers
                 NguoiDung us = HomeQuery.getUser(User.TaiKhoan);
                 if (us != null)
                 {
-                    //Session["Employee"] = us;
+                    Session["Employee"] = us;
                     //if (us.PhanQuyen=="Employee")
                     //{
                     //    return RedirectToAction("Index");
                     //}
+                    return RedirectToAction("Index");
                 }
                 return RedirectToAction("Login");
             }

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "DSChuyenBay";
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Danh sách chuyến bay</h1>
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Sân bay đi</th>
+                            <th>Sân bay đến</th>
+                            <th>Ngày giờ khởi hành</th>
+                            <th>Ngày đặt chậm nhất</th>
+                            <th>Ngày hủy chậm nhất</th>
+                            <th>Số ghế còn lại</th>
+                            <th>Vé chuyến bay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.dscb)
+                        {
+                        <tr>
+                            <td>@item.SanBayDi</td>
+                            <td>@item.SanBayDen</td>
+                            <td>@item.NgayGioKhoiHanh</td>
+                            <td>@item.NgayDatChamNhat</td>
+                            <td>@item.NgayHuyChamNhat</td>
+                            <td>@item.SoGheConLai</td>
+                            <td>
+                                <button style='margin-right:16px' class="btn btn-dark">@Html.ActionLink("Vé chuyến bay", "VeChuyenBay", new { id = item.MaCB })</button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
