@@ -14,18 +14,12 @@ namespace FlightTicket.Models
     
     public partial class ChoNgoi
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ChoNgoi()
-        {
-            this.VeChuyenBays = new HashSet<VeChuyenBay>();
-        }
-    
         public int MaGhe { get; set; }
         public Nullable<int> MaCB { get; set; }
+        public Nullable<int> MaHangVe { get; set; }
         public bool TinhTrang { get; set; }
     
         public virtual ChuyenBay ChuyenBay { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VeChuyenBay> VeChuyenBays { get; set; }
+        public virtual HangVe HangVe { get; set; }
     }
 }

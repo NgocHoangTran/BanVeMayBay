@@ -27,8 +27,11 @@ namespace FlightTicket.Models
         public string Gmail { get; set; }
         public string SoDT { get; set; }
         public string CMND { get; set; }
-        public string PhanQuyen { get; set; }
+        public Nullable<int> ID_Quyen { get; set; }
+        public string DiaChi { get; set; }
+        public Nullable<System.DateTime> NgaySinh { get; set; }
     
+        public virtual Quyen Quyen { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VeChuyenBay> VeChuyenBays { get; set; }
     }

@@ -19,8 +19,6 @@ namespace FlightTicket.Models
         public int ThoiGianDung { get; set; }
         public int TGToiThieu { get; set; }
         public int TGToiDa { get; set; }
-        public int NgayDatChamNhat { get; set; }
-        public int NgayHuyChamNhat { get; set; }
         public string GhiChu { get; set; }
     
         public virtual SanBay SanBay { get; set; }

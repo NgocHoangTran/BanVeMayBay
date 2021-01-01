@@ -19,18 +19,19 @@ namespace FlightTicket.Models
         {
             this.ChiTietChuyenBays = new HashSet<ChiTietChuyenBay>();
             this.ChoNgois = new HashSet<ChoNgoi>();
-            this.DoanhThuBanVes = new HashSet<DoanhThuBanVe>();
             this.DonGias = new HashSet<DonGia>();
-            this.HangVes = new HashSet<HangVe>();
+            this.HangVeCuaChuyenBays = new HashSet<HangVeCuaChuyenBay>();
+            this.VeChuyenBays = new HashSet<VeChuyenBay>();
         }
     
         public int MaCB { get; set; }
         public Nullable<int> SanBayDen { get; set; }
         public Nullable<int> SanBayDi { get; set; }
-        public System.DateTime NgayKhoiHanh { get; set; }
-        public string GioKhoiHanh { get; set; }
+        public System.DateTime NgayGioKhoiHanh { get; set; }
         public int ThoiGianBay { get; set; }
-        public int ThoiGianDungToiThieu { get; set; }
+        public int ThoiGianBayToiThieu { get; set; }
+        public int NgayDatChamNhat { get; set; }
+        public int NgayHuyChamNhat { get; set; }
         public int SoGheConLai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -40,10 +41,10 @@ namespace FlightTicket.Models
         public virtual SanBay SanBay { get; set; }
         public virtual SanBay SanBay1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DoanhThuBanVe> DoanhThuBanVes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DonGia> DonGias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HangVe> HangVes { get; set; }
+        public virtual ICollection<HangVeCuaChuyenBay> HangVeCuaChuyenBays { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<VeChuyenBay> VeChuyenBays { get; set; }
     }
 }

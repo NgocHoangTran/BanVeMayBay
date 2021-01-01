@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "VeChuyenBay";
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Vé của 1 chuyến bay</h1>
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Họ tên</th>
+                            <th>Mã chuyến bay</th>
+                            <th>Số điện thoại</th>
+                            <th>Chứng minh nhân dân</th>
+                            <th>Hạng vé</th>
+                            <th>Giá tiền</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.veChuyenBays)
+                        {
+                            <tr>
+                                <td>@item.hoTen</td>
+                                <td>@item.MaChuyenBay</td>
+                                <td>@item.SoDienThoai</td>
+                                <td>@item.CMND</td>
+                                <td>@item.hangVe</td>
+                                <td>@item.GiaTien</td>
+                                <td>
+                                    <button style='margin-right:16px' class="btn btn-dark">@Html.ActionLink("Vé chuyến bay", "VeChuyenBay", new { id = item.MaCB })</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -82,8 +82,8 @@ E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Net.Http.F
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.Http.xml
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.Http.WebHost.xml
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csprojAssemblyReference.cache
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.CoreCompileInputs.cache
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.CopyComplete
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.dll
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.pdb
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csprojAssemblyReference.cache

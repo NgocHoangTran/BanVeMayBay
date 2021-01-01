@@ -14,18 +14,12 @@ namespace FlightTicket.Models
     
     public partial class DonGia
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DonGia()
-        {
-            this.VeChuyenBays = new HashSet<VeChuyenBay>();
-        }
-    
-        public int MaCB { get; set; }
-        public int MaVe { get; set; }
+        public int MaDonGia { get; set; }
+        public Nullable<int> MaCB { get; set; }
+        public Nullable<int> MaHangVe { get; set; }
+        public Nullable<int> Gia { get; set; }
     
         public virtual ChuyenBay ChuyenBay { get; set; }
         public virtual HangVe HangVe { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VeChuyenBay> VeChuyenBays { get; set; }
     }
 }
