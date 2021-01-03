@@ -39,6 +39,11 @@ namespace FlightTicket.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VeChuyenBay> VeChuyenBays { get; set; }
     
+        public virtual int Insert_ChoNgoi()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Insert_ChoNgoi");
+        }
+    
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {
             var diagramnameParameter = diagramname != null ?

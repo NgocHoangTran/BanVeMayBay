@@ -17,6 +17,7 @@
       <EntityTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.ChoNgoi">
         <MappingFragment StoreEntitySet="ChoNgoi">
           <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
+          <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
           <ScalarProperty Name="MaCB" ColumnName="MaCB" />
           <ScalarProperty Name="MaHangVe" ColumnName="MaHangVe" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
@@ -112,13 +113,13 @@
       <EntityTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.VeChuyenBay">
         <MappingFragment StoreEntitySet="VeChuyenBay">
           <ScalarProperty Name="MaVeCB" ColumnName="MaVeCB" />
-          <ScalarProperty Name="MaCB" ColumnName="MaCB" />
-          <ScalarProperty Name="MaVe" ColumnName="MaVe" />
           <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
           <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Insert_ChoNgoi" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.Insert_ChoNgoi" />
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_dropdiagram" />

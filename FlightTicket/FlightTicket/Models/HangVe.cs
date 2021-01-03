@@ -20,7 +20,6 @@ namespace FlightTicket.Models
             this.ChoNgois = new HashSet<ChoNgoi>();
             this.DonGias = new HashSet<DonGia>();
             this.HangVeCuaChuyenBays = new HashSet<HangVeCuaChuyenBay>();
-            this.VeChuyenBays = new HashSet<VeChuyenBay>();
         }
     
         public int MaHangVe { get; set; }
@@ -32,7 +31,5 @@ namespace FlightTicket.Models
         public virtual ICollection<DonGia> DonGias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HangVeCuaChuyenBay> HangVeCuaChuyenBays { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VeChuyenBay> VeChuyenBays { get; set; }
     }
 }

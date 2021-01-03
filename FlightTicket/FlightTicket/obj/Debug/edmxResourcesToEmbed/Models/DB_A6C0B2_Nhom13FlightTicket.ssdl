@@ -17,6 +17,7 @@
       <PropertyRef Name="MaGhe" />
     </Key>
     <Property Name="MaGhe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoGhe" Type="int" />
     <Property Name="MaCB" Type="int" />
     <Property Name="MaHangVe" Type="int" />
     <Property Name="TinhTrang" Type="bit" Nullable="false" />
@@ -104,10 +105,9 @@
       <PropertyRef Name="MaVeCB" />
     </Key>
     <Property Name="MaVeCB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="MaCB" Type="int" />
-    <Property Name="MaVe" Type="int" />
     <Property Name="MaNguoiDung" Type="int" />
     <Property Name="NgayDat" Type="datetime" Nullable="false" />
+    <Property Name="MaGhe" Type="int" />
   </EntityType>
   <Association Name="FK__ChiTietCh__SanBa__37A5467C">
     <End Role="SanBay" Type="Self.SanBay" Multiplicity="1" />
@@ -133,7 +133,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChoNgoi__MaCB__2F10007B">
+  <Association Name="FK__ChoNgoi__MaCB__76969D2E">
     <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="0..1" />
     <End Role="ChoNgoi" Type="Self.ChoNgoi" Multiplicity="*" />
     <ReferentialConstraint>
@@ -145,7 +145,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__ChoNgoi__MaHangV__300424B4">
+  <Association Name="FK__ChoNgoi__MaHangV__778AC167">
     <End Role="HangVe" Type="Self.HangVe" Multiplicity="0..1" />
     <End Role="ChoNgoi" Type="Self.ChoNgoi" Multiplicity="*" />
     <ReferentialConstraint>
@@ -241,7 +241,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VeChuyenB__MaNgu__49C3F6B7">
+  <Association Name="FK__VeChuyenB__MaGhe__7B5B524B">
+    <End Role="ChoNgoi" Type="Self.ChoNgoi" Multiplicity="0..1" />
+    <End Role="VeChuyenBay" Type="Self.VeChuyenBay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoNgoi">
+        <PropertyRef Name="MaGhe" />
+      </Principal>
+      <Dependent Role="VeChuyenBay">
+        <PropertyRef Name="MaGhe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__VeChuyenB__MaNgu__7A672E12">
     <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="0..1" />
     <End Role="VeChuyenBay" Type="Self.VeChuyenBay" Multiplicity="*" />
     <ReferentialConstraint>
@@ -253,31 +265,8 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__VeChuyenBa__MaCB__47DBAE45">
-    <End Role="ChuyenBay" Type="Self.ChuyenBay" Multiplicity="0..1" />
-    <End Role="VeChuyenBay" Type="Self.VeChuyenBay" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ChuyenBay">
-        <PropertyRef Name="MaCB" />
-      </Principal>
-      <Dependent Role="VeChuyenBay">
-        <PropertyRef Name="MaCB" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__VeChuyenBa__MaVe__48CFD27E">
-    <End Role="HangVe" Type="Self.HangVe" Multiplicity="0..1" />
-    <End Role="VeChuyenBay" Type="Self.VeChuyenBay" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="HangVe">
-        <PropertyRef Name="MaHangVe" />
-      </Principal>
-      <Dependent Role="VeChuyenBay">
-        <PropertyRef Name="MaVe" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="Insert_ChoNgoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -328,11 +317,11 @@
       <End Role="ChuyenBay" EntitySet="ChuyenBay" />
       <End Role="ChiTietChuyenBay" EntitySet="ChiTietChuyenBay" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChoNgoi__MaCB__2F10007B" Association="Self.FK__ChoNgoi__MaCB__2F10007B">
+    <AssociationSet Name="FK__ChoNgoi__MaCB__76969D2E" Association="Self.FK__ChoNgoi__MaCB__76969D2E">
       <End Role="ChuyenBay" EntitySet="ChuyenBay" />
       <End Role="ChoNgoi" EntitySet="ChoNgoi" />
     </AssociationSet>
-    <AssociationSet Name="FK__ChoNgoi__MaHangV__300424B4" Association="Self.FK__ChoNgoi__MaHangV__300424B4">
+    <AssociationSet Name="FK__ChoNgoi__MaHangV__778AC167" Association="Self.FK__ChoNgoi__MaHangV__778AC167">
       <End Role="HangVe" EntitySet="HangVe" />
       <End Role="ChoNgoi" EntitySet="ChoNgoi" />
     </AssociationSet>
@@ -364,16 +353,12 @@
       <End Role="Quyen" EntitySet="Quyen" />
       <End Role="NguoiDung" EntitySet="NguoiDung" />
     </AssociationSet>
-    <AssociationSet Name="FK__VeChuyenB__MaNgu__49C3F6B7" Association="Self.FK__VeChuyenB__MaNgu__49C3F6B7">
+    <AssociationSet Name="FK__VeChuyenB__MaGhe__7B5B524B" Association="Self.FK__VeChuyenB__MaGhe__7B5B524B">
+      <End Role="ChoNgoi" EntitySet="ChoNgoi" />
+      <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
+    </AssociationSet>
+    <AssociationSet Name="FK__VeChuyenB__MaNgu__7A672E12" Association="Self.FK__VeChuyenB__MaNgu__7A672E12">
       <End Role="NguoiDung" EntitySet="NguoiDung" />
-      <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
-    </AssociationSet>
-    <AssociationSet Name="FK__VeChuyenBa__MaCB__47DBAE45" Association="Self.FK__VeChuyenBa__MaCB__47DBAE45">
-      <End Role="ChuyenBay" EntitySet="ChuyenBay" />
-      <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
-    </AssociationSet>
-    <AssociationSet Name="FK__VeChuyenBa__MaVe__48CFD27E" Association="Self.FK__VeChuyenBa__MaVe__48CFD27E">
-      <End Role="HangVe" EntitySet="HangVe" />
       <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
     </AssociationSet>
   </EntityContainer>

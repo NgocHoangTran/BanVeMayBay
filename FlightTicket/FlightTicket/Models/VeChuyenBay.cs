@@ -15,13 +15,11 @@ namespace FlightTicket.Models
     public partial class VeChuyenBay
     {
         public int MaVeCB { get; set; }
-        public Nullable<int> MaCB { get; set; }
-        public Nullable<int> MaVe { get; set; }
         public Nullable<int> MaNguoiDung { get; set; }
         public System.DateTime NgayDat { get; set; }
+        public Nullable<int> MaGhe { get; set; }
     
-        public virtual ChuyenBay ChuyenBay { get; set; }
-        public virtual HangVe HangVe { get; set; }
+        public virtual ChoNgoi ChoNgoi { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
     }
 }

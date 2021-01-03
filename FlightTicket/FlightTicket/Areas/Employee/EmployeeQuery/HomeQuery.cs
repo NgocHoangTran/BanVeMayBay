@@ -22,9 +22,9 @@ namespace FlightTicket.Areas.Employee.EmployeeQuery
         }
         public static NguoiDung getUser(string taikhoan)
         {
-            using (var _contet= new DB_A6C0B2_Nhom13FlightTicketEntities())
+            using (var _context= new DB_A6C0B2_Nhom13FlightTicketEntities())
             {
-                var dbuser = (from nguoidung in _contet.NguoiDungs
+                var dbuser = (from nguoidung in _context.NguoiDungs
                               where nguoidung.TaiKhoan == taikhoan
                               select nguoidung).SingleOrDefault();
                 return dbuser;

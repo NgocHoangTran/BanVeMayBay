@@ -30,11 +30,10 @@ namespace FlightTicket.Areas.Employee.Controllers
                 if (us != null)
                 {
                     Session["Employee"] = us;
-                    //if (us.PhanQuyen=="Employee")
-                    //{
-                    //    return RedirectToAction("Index");
-                    //}
-                    return RedirectToAction("Index");
+                    if (us.ID_Quyen == 2)
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
                 return RedirectToAction("Login");
             }

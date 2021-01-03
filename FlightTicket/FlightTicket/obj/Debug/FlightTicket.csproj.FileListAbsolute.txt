@@ -87,3 +87,9 @@ E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicke
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.dll
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.pdb
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csprojAssemblyReference.cache
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\BouncyCastle.Crypto.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\itextsharp.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Syncfusion.Compression.Base.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Syncfusion.Licensing.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\itextsharp.xml
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Syncfusion.Compression.Base.xml

@@ -20,24 +20,27 @@
                             <th>Mã chuyến bay</th>
                             <th>Số điện thoại</th>
                             <th>Chứng minh nhân dân</th>
+                            <th>Số ghế</th>
                             <th>Hạng vé</th>
                             <th>Giá tiền</th>
+                            <th>Xuất vé</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in ViewBag.dsvcb)
                             {
-                                <tr>
-                                    <td>@item.HoTen</td>
-                                    <td>@item.MaCB</td>
-                                    <td>@item.SoDienThoai</td>
-                                    <td>@item.CMND</td>
-                                    <td>@item.HangVe</td>
-                                    <td>@item.GiaTien</td>
-                                    <td>
-                                        <button style='margin-right:16px' class="btn btn-dark">@Html.ActionLink("Vé chuyến bay", "VeChuyenBay", new { id = item.MaCB })</button>
-                                    </td>
-                                </tr>
+                        <tr>
+                            <td>@item.HoTen</td>
+                            <td>@item.MaCB</td>
+                            <td>@item.SoDienThoai</td>
+                            <td>@item.CMND</td>
+                            <td>@item.SoGhe</td>
+                            <td>@item.HangVe</td>
+                            <td>@item.GiaTien</td>
+                            <td>
+                                <button style='margin-right:16px' class="btn btn-dark">@Html.ActionLink("Xuất vé", "XuatVe", new { id = item.SoGhe })</button>
+                            </td>
+                        </tr>
                             }
                     </tbody>
                 </table>

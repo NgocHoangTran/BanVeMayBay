@@ -21,9 +21,15 @@ namespace FlightTicket.Areas.Employee.Controllers
         public ActionResult VeChuyenBay(int ID)
         {
             List<DanhSachVeChuyenBay> dsvcb = new List<DanhSachVeChuyenBay>();
-            dsvcb = ChuyenBayQuery.danhSachVeChuyenBays();
+            dsvcb = ChuyenBayQuery.danhSachVeChuyenBays(ID);
             ViewBag.dsvcb = dsvcb;
             return View();
+        }
+        public ActionResult XuatVe(int id)
+        {
+            LayVeCuaND veCuaND = new LayVeCuaND();
+            veCuaND = ChuyenBayQuery.get01ve(id);
+            return View(veCuaND);
         }
     }
 }
