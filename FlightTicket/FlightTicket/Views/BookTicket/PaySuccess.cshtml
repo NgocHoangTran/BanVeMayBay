@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "PaySuccess";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Thong tin ve</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <img width="100%" src="~/images/maybay.jpg" />
+        </div>
+        <div class="col-8">
+            <h3>Ma chuyen bay : @ViewBag.cbay.MaCB</h3>
+            <h3>Thoi gian : @ViewBag.cbay.NgayGioKhoiHanh</h3>
+            <h3>Hang ve : @ViewBag.hangVe.TenHangVe</h3>
+            <h3>So ghe : @ViewBag.Ghe.SoGhe</h3>
+        </div>
+    </div>
+</div>

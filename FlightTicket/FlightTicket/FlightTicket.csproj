@@ -163,7 +163,7 @@
     <Compile Include="Areas\Employee\EmployeeQuery\ChuyenBayQuery.cs" />
     <Compile Include="Areas\Employee\EmployeeQuery\HomeQuery.cs" />
     <Compile Include="Controllers\BookTicketController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HomepageController.cs" />
     <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -280,6 +280,7 @@
     <Content Include="images\g4.jpg" />
     <Content Include="images\g5.jpg" />
     <Content Include="images\g6.jpg" />
+    <Content Include="images\maybay.jpg" />
     <Content Include="images\selected_seat_img.gif" />
     <Content Include="Models\DB_A6C0B2_Nhom13FlightTicket.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -331,17 +332,15 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\BookTicket\Index.cshtml" />
     <Content Include="Views\BookTicket\Form.cshtml" />
     <Content Include="Views\BookTicket\ShowSeats.cshtml" />
     <Content Include="Views\Paypal\SuccessView.cshtml" />
     <Content Include="Views\Paypal\FailureView.cshtml" />
+    <Content Include="Views\BookTicket\PaySuccess.cshtml" />
+    <Content Include="Views\Homepage\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

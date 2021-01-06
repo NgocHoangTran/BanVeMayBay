@@ -10,6 +10,7 @@ namespace FlightTicket.Controllers
 {
     public class PaypalController : Controller
     {
+        private DB_A6C0B2_Nhom13FlightTicketEntities db = new DB_A6C0B2_Nhom13FlightTicketEntities();
         // GET: Paypal
         public ActionResult Index()
         {
@@ -91,7 +92,7 @@ namespace FlightTicket.Controllers
                 return View("FailureView");
             }
 
-            return View("SuccessView");
+            return Redirect("/BookTicket/PaySuccess");
         }
         private PayPal.Api.Payment payment;
 
@@ -103,15 +104,21 @@ namespace FlightTicket.Controllers
         }
         private Payment CreatePayment(APIContext apiContext, string redirectUrl)
         {
+            //var cBay = Session["chuyenBay"] as ChuyenBay;
+            //int hangVe = Convert.ToInt32(Session["hangVe"]);
+            //var donGia = db.DonGias.Where(x => x.MaCB == cBay.MaCB && x.MaHangVe == hangVe).FirstOrDefault();
 
+
+            var cBay = db.ChuyenBays.FirstOrDefault();
+            var donGia = db.DonGias.Where(x => x.MaDonGia == 1).FirstOrDefault();
             //similar to credit card create itemlist and add item objects to it
             var itemList = new ItemList() { items = new List<Item>() };
 
             itemList.items.Add(new Item()
             {
-                name = "Item Name",
+                name = "Ma chuyen bay"+ cBay.MaCB.ToString(),
                 currency = "USD",
-                price = "5",
+                price = donGia.Gia.ToString(),
                 quantity = "1",
                 sku = "sku"
             });
@@ -128,16 +135,16 @@ namespace FlightTicket.Controllers
             // similar as we did for credit card, do here and create details object
             var details = new Details()
             {
-                tax = "1",
-                shipping = "1",
-                subtotal = "5"
+                tax = "0",
+                shipping = "0",
+                subtotal = donGia.Gia.ToString()
             };
 
             // similar as we did for credit card, do here and create amount object
             var amount = new Amount()
             {
                 currency = "USD",
-                total = "7", // Total must be equal to sum of shipping, tax and subtotal.
+                total = donGia.Gia.ToString(), // Total must be equal to sum of shipping, tax and subtotal.
                 details = details
             };
 
