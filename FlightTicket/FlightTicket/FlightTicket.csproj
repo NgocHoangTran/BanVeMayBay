@@ -58,6 +58,12 @@
       <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="Syncfusion.Compression.Base, Version=18.4460.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Compression.Base.18.4.0.32\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
@@ -120,9 +126,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -159,7 +162,9 @@
     <Compile Include="Areas\Employee\EmployeeAreaRegistration.cs" />
     <Compile Include="Areas\Employee\EmployeeQuery\ChuyenBayQuery.cs" />
     <Compile Include="Areas\Employee\EmployeeQuery\HomeQuery.cs" />
+    <Compile Include="Controllers\BookTicketController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaypalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -172,6 +177,7 @@
     <Compile Include="Models\ChuyenBay.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\DanhSachChuyenBay.cs" />
     <Compile Include="Models\DanhSachVeChuyenBay.cs" />
     <Compile Include="Models\DB_A6C0B2_Nhom13FlightTicket.Context.cs">
@@ -199,6 +205,7 @@
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LayVeCuaND.cs" />
+    <Compile Include="Models\Logger.cs" />
     <Compile Include="Models\NguoiDung.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
@@ -208,6 +215,7 @@
     <Compile Include="Models\SanBay.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Seat.cs" />
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
@@ -237,10 +245,42 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\seat.css" />
+    <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\ab1.jpg" />
+    <Content Include="images\ab2.jpg" />
+    <Content Include="images\available_seat_img.gif" />
+    <Content Include="images\b1.jpg" />
+    <Content Include="images\b2.jpg" />
+    <Content Include="images\b3.jpg" />
+    <Content Include="images\b4.jpg" />
+    <Content Include="images\b5.jpg" />
+    <Content Include="images\b6.jpg" />
+    <Content Include="images\b7.jpg" />
+    <Content Include="images\b8.jpg" />
+    <Content Include="images\bag.png" />
+    <Content Include="images\bag1.png" />
+    <Content Include="images\bag2.png" />
+    <Content Include="images\banner1.jpg" />
+    <Content Include="images\bg.jpeg" />
+    <Content Include="images\bgg1.jpeg" />
+    <Content Include="images\booked_seat_img.gif" />
+    <Content Include="images\c1.jpg" />
+    <Content Include="images\c2.jpg" />
+    <Content Include="images\g1.jpg" />
+    <Content Include="images\g2.jpg" />
+    <Content Include="images\g3.jpg" />
+    <Content Include="images\g4.jpg" />
+    <Content Include="images\g5.jpg" />
+    <Content Include="images\g6.jpg" />
+    <Content Include="images\selected_seat_img.gif" />
     <Content Include="Models\DB_A6C0B2_Nhom13FlightTicket.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.edmx</DependentUpon>
@@ -267,6 +307,11 @@
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Employee\Views\ChuyenBay\XuatVe.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -292,6 +337,11 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BookTicket\Index.cshtml" />
+    <Content Include="Views\BookTicket\Form.cshtml" />
+    <Content Include="Views\BookTicket\ShowSeats.cshtml" />
+    <Content Include="Views\Paypal\SuccessView.cshtml" />
+    <Content Include="Views\Paypal\FailureView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
