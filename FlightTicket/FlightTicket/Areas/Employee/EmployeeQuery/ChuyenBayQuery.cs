@@ -31,7 +31,7 @@ namespace FlightTicket.Areas.Employee.EmployeeQuery
                                join hangve in _context.HangVes on chongoi.MaHangVe equals hangve.MaHangVe
                                join giatien in _context.DonGias on hangve.MaHangVe equals giatien.MaHangVe
                                where chuyenbay.MaCB==id
-                               select new DanhSachVeChuyenBay { MaCB=chuyenbay.MaCB, HoTen= nguoidung.HoTen, CMND=nguoidung.CMND, SoDienThoai=nguoidung.SoDT, SoGhe= chongoi.SoGhe, HangVe= hangve.TenHangVe, GiaTien=giatien.Gia }).ToList();
+                               select new DanhSachVeChuyenBay { MaCB=chuyenbay.MaCB, HoTen= nguoidung.HoTen, CMND=nguoidung.CMND, SoDienThoai=nguoidung.SoDT, SoGhe= chongoi.SoGhe, HangVe= hangve.TenHangVe, GiaTien=giatien.Gia, MaGhe=chongoi.MaGhe }).ToList();
                 return dbdsvcb;
             }
         }
@@ -42,10 +42,14 @@ namespace FlightTicket.Areas.Employee.EmployeeQuery
                 var get01vemb = (from nguoidung in _context.NguoiDungs
                                  join vechuyenbay in _context.VeChuyenBays on nguoidung.MaNguoiDung equals vechuyenbay.MaNguoiDung
                                  join chongoi in _context.ChoNgois on vechuyenbay.MaGhe equals chongoi.MaGhe
+                                 join hangve in _context.HangVes on chongoi.MaHangVe equals hangve.MaHangVe
+                                 join giatien in _context.DonGias on hangve.MaHangVe equals giatien.MaHangVe
+                                 join chuyenbay in _context.ChuyenBays on chongoi.MaCB equals chuyenbay.MaCB
                                  where chongoi.MaGhe == id
-                                 select new LayVeCuaND { HoTen = nguoidung.HoTen, CMND = nguoidung.CMND, SDT = nguoidung.SoDT, SoGhe=chongoi.SoGhe}).SingleOrDefault();
+                                 select new LayVeCuaND {id_ND=nguoidung.MaNguoiDung, HoTen = nguoidung.HoTen, CMND = nguoidung.CMND, SDT = nguoidung.SoDT, SoGhe=chongoi.SoGhe, HangVe= hangve.TenHangVe, giatien= giatien.Gia, maGhe=chongoi.MaGhe, MaCB=chongoi.MaCB}).SingleOrDefault();
                 return get01vemb;
             }
         }
+        
     }
 }

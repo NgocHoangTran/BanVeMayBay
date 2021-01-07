@@ -11,6 +11,7 @@ namespace FlightTicket.Models
         public string HoTen { get; set; }
         public int MaCB { get; set; }
         public int? SoGhe { get; set; }
+        public int MaGhe { get; set; }
         public string SoDienThoai { get; set; }
         public string CMND { get; set; }
         public string HangVe { get; set; }

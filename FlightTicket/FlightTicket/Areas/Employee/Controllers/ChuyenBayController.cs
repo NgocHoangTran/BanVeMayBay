@@ -31,5 +31,6 @@ namespace FlightTicket.Areas.Employee.Controllers
             veCuaND = ChuyenBayQuery.get01ve(id);
             return View(veCuaND);
         }
+
     }
 }

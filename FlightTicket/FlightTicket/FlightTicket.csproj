@@ -230,6 +230,7 @@
     <Content Include="Areas\Employee\assets\img\error-404-monochrome.svg" />
     <Content Include="Areas\Employee\css\loginEmployee.css" />
     <Content Include="Areas\Employee\css\styles.css" />
+    <Content Include="Areas\Employee\images\GheNGoi.png" />
     <Content Include="Areas\Employee\images\img_avatar2.png" />
     <Content Include="Areas\Employee\js\datatables-demo.js" />
     <Content Include="Areas\Employee\js\scripts.js" />
