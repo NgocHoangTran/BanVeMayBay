@@ -1,0 +1,354 @@
+﻿@model FlightTicket.Models.ChuyenBay
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chuyến bay @Model.MaCB: @Model.SanBay1.TenSB-@Model.SanBay.TenSB</h2>
+<br />
+@*<script src="~/Areas/Admin/Assets/js/UserCreate.js"></script>*@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+
+            <!-- Button to Open the Modal - Add User -->
+            <button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;" data-toggle="modal"
+                    data-target="#addHVCB">
+                <i class="fa fa-plus mr-2"></i> Thêm hạng vé cho chuyến bay
+            </button>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<div class="col-12">
+    <!-- Add-User The Modal -->
+    <div class="modal" id="addHVCB">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm hạng vé cho chuyến bay</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @using (Html.BeginForm("CreateHV", "ChuyenBays", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+
+                            <input type="text" id="MaCB" class="form-control bg-gray-200" name="MaCB" readonly value="@Model.MaCB" style="display:none">
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="addUsername">Hạng vé :</label>
+                            @Html.DropDownList("MaHangVe", null, "Select one", htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="addUsername">Số lượng ghế :</label>
+                            <input type="text" id="addHV" class="form-control" name="Soluongghe">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+
+                        <button type="submit" id="createUserForm" class="btn btn-success">Add</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Hạng vé của chuyến bay</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box table-responsive">
+
+                            <table id="example2" class="table table-striped table-bordered " style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Mã hạng vé</th>
+                                        <th>Tên hạng vé</th>
+                                        <th>Số lượng ghế</th>
+                                        <th></th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.SoHVCB)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.MaHangVe
+                                            </td>
+                                            <td>
+                                                @item.HangVe.TenHangVe
+                                            </td>
+                                            <td>
+                                                @item.Soluongghe
+                                            </td>
+
+
+                                            <td>
+
+                                                <button type="button" class="btn btn-info btn-xs" title="Edit"
+                                                            onclick="EditHVCB(@item.MaCB,@item.MaHangVe)">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </button>
+                                                <button type="button" class="btn btn-danger btn-xs" title="Delete" onclick="DeleteHVCB(@item.MaCB,@item.MaHangVe)">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+
+            <!-- Button to Open the Modal - Add User -->
+            <button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;" data-toggle="modal"
+                    data-target="#addSBTG">
+                <i class="fa fa-plus mr-2"></i> Thêm sân bay trung gian cho chuyến bay
+            </button>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<div class="col-12">
+    <!-- Add-User The Modal -->
+    <div class="modal" id="addSBTG">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm sân bay trung gian cho chuyến bay</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @using (Html.BeginForm("CreateSBTG", "ChuyenBays", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+
+                            <input type="text" id="MaCB" class="form-control bg-gray-200" name="MaCB" readonly value="@Model.MaCB" style="display:none">
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="addUsername">Sân bay trung gian :</label>
+                            @Html.DropDownList("SanBayTrungGian", null, "Select one", htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="addUsername">Thời gian dừng :</label>
+                            <input type="text" id="addHV" class="form-control" name="ThoiGianDung">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="addUsername">Thời gian dừng tối thiểu :</label>
+                            <input type="text" id="addHV" class="form-control" name="TGToiThieu">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="addUsername">Thời gian dừng tối đa :</label>
+                            <input type="text" id="addHV" class="form-control" name="TGToiDa">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="addUsername">Ghi chú :</label>
+                            <input type="text" id="addHV" class="form-control" name="GhiChu">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <button type="submit" id="createUserForm" class="btn btn-success">Add</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Sân bay trung gian của chuyến bay</h2>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box table-responsive">
+
+                            <table id="example2" class="table table-striped table-bordered " style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Tên sân bay</th>
+                                        <th>Thời gian dừng</th>
+                                        <th>Thời gian dừng tối thiểu</th>
+                                        <th>Thời gian dừng tối đa</th>
+                                        <th>Ghi chú</th>
+                                        <th></th>
+</thead>
+                                <tbody>
+                                    @foreach (var item in ViewBag.SoSBTG)
+                                    {
+                                    <tr>
+                                        <td>
+                                            @item.SanBay.TenSB
+                                        </td>
+                                        <td>
+                                            @item.ThoiGianDung
+                                        </td>
+                                        <td>
+                                            @item.TGToiThieu
+                                        </td>
+                                        <td>
+                                            @item.TGToiDa
+                                        </td>
+                                        <td>
+                                            @item.GhiChu
+                                        </td>
+                                        <td>
+
+                                            <button type="button" class="btn btn-info btn-xs" title="Edit"
+                                                    onclick="EditSBTG(@item.MaCB,@item.SanBayTrungGian)">
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-xs" title="Delete" onclick="DeleteSBTG(@item.MaCB,@item.SanBayTrungGian)">
+                                                <i class="fa fa-trash-o"></i>
+                                            </button>
+
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="modal hide fade" id="edit-person">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="edit-person-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function resetFunc() {
+        location.reload();
+    };
+
+    //Function Delete
+    function DeleteHVCB(a, b) {
+        debugger
+        a.preventDefault
+        b.preventDefault
+        var r = confirm("Do you want to delete?");
+        // var addid = $(this).data('id');
+        if (r == true) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/VeChuyenBays/DeleteHVCB",
+                data: { idcb: a, idhv: b },
+                success: function (response) {
+                    alert("Deleted");
+
+
+                },
+                error: function () {
+                    alert("Error");
+                }
+            });
+        }
+    };
+    function DeleteSBTG(a, b) {
+        debugger
+        a.preventDefault
+        b.preventDefault
+        var r = confirm("Do you want to delete?");
+        // var addid = $(this).data('id');
+        if (r == true) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/VeChuyenBays/DeleteSBTG",
+                data: { idcb: a, idhv: b },
+                success: function (response) {
+                    alert("Deleted");
+
+
+                },
+                error: function () {
+                    alert("Error");
+                }
+            });
+        }
+    };
+    function EditSBTG(a, b) {
+        var url = "/Admin/ChuyenBays/EditSBTG"; // the url to the controller
+        var idcb = a; // the id that's given to each button in the list
+        var idhv = b;
+        $.get(url + '/?idcb=' + idcb+"&idhv="+idhv, function (data) {
+            $('#edit-person-container').html(data);
+            $('#edit-person').modal('show');
+        });
+    };
+    function EditHVCB(a, b) {
+        var url = "/Admin/ChuyenBays/EditHVCB"; // the url to the controller
+        var idcb = a; // the id that's given to each button in the list
+        var idhv = b;
+        $.get(url + '/?idcb=' + idcb + "&idhv=" + idhv, function (data) {
+            $('#edit-person-container').html(data);
+            $('#edit-person').modal('show');
+        });
+    };
+    
+
+
+    function OrderDetailForeach(e) {
+        alert("abc");
+        alert(e);
+    };
+
+</script>
+
+
+
+
+
+
+

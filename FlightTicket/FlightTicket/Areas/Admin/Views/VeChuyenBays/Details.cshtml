@@ -1,0 +1,43 @@
+﻿@model FlightTicket.Models.VeChuyenBay
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>VeChuyenBay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChoNgoi.MaGhe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChoNgoi.MaGhe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NguoiDung.TaiKhoan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NguoiDung.TaiKhoan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaVeCB }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Reveneu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Areas/Admin/Assets/css/DatePicker.css" rel="stylesheet" />
+<script src="~/Areas/Admin/Assets/js/DatePicker.js"></script>
+
+<div class="row">
+    <div class="col-md-12 col-sm-12  ">
+        <div class="x_panel">
+            <div class="x_title">
+                <select class="fa-pull-right" name="selector" id="selector">
+                    <option value="1">Theo tháng</option>
+                    <option value="2">Theo năm</option>
+                </select>
+                <div id="datepicker" class="input-group date fa-pull-right">
+                    <input class="form-control" type="text" readonly />
+                    <span class="input-group-addon"><i></i></span>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            @Html.Partial("ReveneuChart");
+        </div>
+    </div>
+</div>
+

@@ -16,7 +16,7 @@ namespace FlightTicket.Areas.Employee.EmployeeQuery
                 var dbdscb = (from chuyenbay in _context.ChuyenBays
                               join sanbaydi in _context.SanBays on chuyenbay.SanBayDi equals sanbaydi.MaSB
                               join sanbayden in _context.SanBays on chuyenbay.SanBayDen equals sanbayden.MaSB
-                              select new DanhSachChuyenBay { MaCB=chuyenbay.MaCB, SanBayDi = sanbaydi.TenSB, SanBayDen = sanbayden.TenSB, NgayGioKhoiHanh = chuyenbay.NgayGioKhoiHanh, NgayDatChamNhat = chuyenbay.NgayDatChamNhat, NgayHuyChamNhat = chuyenbay.NgayHuyChamNhat, SoGheConLai = chuyenbay.SoGheConLai }).ToList();
+                              select new DanhSachChuyenBay { MaCB=chuyenbay.MaCB, SanBayDi = sanbaydi.TenSB, SanBayDen = sanbayden.TenSB, NgayGioKhoiHanh = chuyenbay.NgayGioKhoiHanh, NgayDatChamNhat = chuyenbay.NgayDatChamNhat, NgayHuyChamNhat = chuyenbay.NgayHuyChamNhat, SoGheConLai = (int)chuyenbay.SoGheConLai }).ToList();
                 return dbdscb;
             }
         }
