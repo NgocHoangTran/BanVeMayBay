@@ -1,0 +1,108 @@
+﻿@model FlightTicket.Models.DSVeCB
+
+@{
+    Layout = null;
+}
+
+
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h4 class="modal-title">Sửa vé chuyến bay</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body" id="edit">
+    @using (Html.BeginForm("Edit", "VeChuyenBays", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label asp-for="addUsername">Mã vé :</label>
+            <input type="text" id="mave" class="form-control bg-gray-200" name="MaVe" readonly value="@Model.MaVe">
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="addName">Sân bay đi :</label>
+            @Html.DropDownListFor(model => model.SBDi, (SelectList)ViewBag.SanBayDi, htmlAttributes: new { @class = "form-control",@id="SanBayDi" })
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Sân bay đến :</label>
+            @Html.DropDownListFor(model => model.SBDen, (SelectList)ViewBag.SanBayDen, htmlAttributes: new { @class = "form-control",@id="SanBayDen" })
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Hạng vé :</label>
+            @Html.DropDownListFor(model => model.HangVe, (SelectList)ViewBag.HangVe, htmlAttributes: new { @class = "form-control",@id="HangVe" })
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Số ghế :</label>
+            @Html.DropDownListFor(model => model.SoGhe, (SelectList)ViewBag.MaGhe, htmlAttributes: new { @class = "form-control",@id="MaGhe" })
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Giá :</label>
+            <input type="text" readonly id="gia" class="form-control" name="Gia" value="@ViewBag.Gia">
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Người đặt :</label>
+            <input type="text" id="mauser" readonly class="form-control" name="MaNguoiDung" value="@Model.HoTen">
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Ngày đặt :</label>
+            <input type="date" class="form-control" id="ngaydat" name="Ngaydi" value="@Model.NgayDat.ToString("yyyy-MM-dd")">
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    }
+</div>
+<script>
+    $("#SanBayDi").add("#SanBayDen").add("#HangVe").on('change', function (event) {
+        debugger
+        var sbdi = parseInt($("#SanBayDi").val()) ?? 0;
+        var sbden = parseInt($("#SanBayDen").val()) ?? 0;
+        var hangve = parseInt($("#HangVe").val()) ?? 0;
+        var mave = parseInt($("#mave").val());
+        var hoten = parseInt($("#mauser").val());
+        var ngaydat = ($("#ngaydat").val());
+        if (isNaN(sbdi) || isNaN(sbden) || isNaN(hangve))
+            return false;
+        else {
+
+
+            if (sbdi != sbden) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/VeChuyenBays/ChoNgoiEdit",
+                    data: { MaVe:mave,sbdi: sbdi, sbden: sbden, hangve: hangve,Ngaydi:ngaydat,hoten:hoten },
+
+                    success: function (response) {
+                        console.log(response)
+                        $("#Edit").html(response)
+
+                        $.ajax({
+                            type: "GET",
+                            url: "/Admin/VeChuyenBays/Gia",
+                            data: { sbdi: sbdi, sbden: sbden, hangve: hangve },
+
+                            success: function (response) {
+                                console.log(response.value)
+                                $("#gia").val(response.value)
+
+                            }
+                        });
+                    }
+
+                });
+
+            }
+        }
+    });
+</script>
+

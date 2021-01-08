@@ -1,0 +1,256 @@
+﻿@model IEnumerable<FlightTicket.Models.DSVeCB>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Employee/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+
+            <!-- Button to Open the Modal - Add User -->
+            <button type="button" class="btn btn-success" style="width: 15%; display:inline; float: right;" data-toggle="modal"
+                    data-target="#addVe">
+                <i class="fa fa-plus mr-2"></i> Thêm vé
+            </button>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<div class="col-12">
+    <!-- Add-User The Modal -->
+    <div class="modal" id="addVe">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm vé</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    @using (Html.BeginForm("Create", "VeChuyenBays", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            <label asp-for="addUsername">Sân bay đi :</label>
+                            @Html.DropDownList("SanBayDi", null, "Select one", htmlAttributes: new { @class = "form-control" })
+
+                            <span asp-validation-for="Username" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="addEmail">Sân bay đến :</label>
+                            @Html.DropDownList("SanBayDen", null, "Select one", htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="addPass">Hạng vé : </label>
+                            @Html.DropDownList("HangVe", null, "Select one", htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group" id="chongoi">
+                            <label for="addPass">Chỗ ngồi : </label>
+                            @Html.Partial("~/Areas/Admin/Views/VeChuyenBays/_ChoNgoi.cshtml");
+
+                        </div>
+                        <div class="form-group">
+                            <label for="addName">Giá :</label>
+                            <input type="text" id="gia" class="form-control" name="Gia" value="0" readonly>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="addPass">Tên khách hàng : </label>
+                            @Html.DropDownList("MaNguoiDung", null, "Select one", htmlAttributes: new { @class = "form-control" })
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="addDOfB">Ngày đi :</label>
+                            <input type="date" class="form-control" id="addDOB" name="Ngaydi">
+                        </div>
+                        <button type="submit" id="createUserForm" class="btn btn-success">Add</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <h1 class="mt-4">Danh sách chuyến bay</h1>
+    <div class="card mb-4">
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã vé</th>
+                            <th>Họ Tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Sân bay đi</th>
+                            <th>Sân bay đến</th>
+                            <th>Giá</th>
+                            <th>Hạng vé</th>
+                            <th>Số ghế</th>
+                            <th>Ngày đặt</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MaVe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HoTen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoDT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDi)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenDen)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Gia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.HangVe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoGhe)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NgayDat)
+                                </td>
+
+                                <td>
+
+                                   
+                                    <button type="button" class="btn btn-danger btn-xs" title="Delete" onclick="DeleteFunction(@item.MaVe)">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal hide fade" id="edit-person">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="edit-person-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#SanBayDi").add("#SanBayDen").add("#HangVe").on('change', function (event) {
+        debugger
+        var sbdi = parseInt($("#SanBayDi").val())??0;
+        var sbden = parseInt($("#SanBayDen").val())??0;
+        var hangve = parseInt($("#HangVe").val()) ?? 0;
+        if (isNaN(sbdi) || isNaN(sbden) || isNaN( hangve))
+            return false;
+        else {
+
+
+            if (sbdi != sbden) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/VeChuyenBays/_ChoNgoi",
+                    data: { sbdi: sbdi, sbden: sbden, hangve: hangve },
+
+                    success: function (response) {
+                        console.log(response)
+                        $("#selector").html(response)
+
+                        $.ajax({
+                            type: "GET",
+                            url: "/Admin/VeChuyenBays/Gia",
+                            data: { sbdi: sbdi, sbden: sbden, hangve: hangve },
+
+                            success: function (response) {
+                                console.log(response.value)
+                                $("#gia").val(response.value)
+
+                            }
+                        });
+                    }
+
+                });
+
+            }
+        }
+    });
+    function resetFunc() {
+        location.reload();
+    };
+
+    //Function Delete
+    function DeleteFunction(e) {
+        debugger
+        e.preventDefault
+        var r = confirm("Do you want to delete?");
+       // var addid = $(this).data('id');
+        if (r == true) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/VeChuyenBays/Delete",
+                data: { id: e },
+                success: function (response) {
+                    alert("Deleted");
+
+
+                },
+                error: function () {
+                    alert("Error");
+                }
+            });
+        }
+    };
+    function EditUser(e) {
+        var url = "/Admin/VeChuyenBays/Edit"; // the url to the controller
+        var id = e; // the id that's given to each button in the list
+        $.get(url + '/' + id, function (data) {
+            $('#edit-person-container').html(data);
+            $('#edit-person').modal('show');
+        });
+    };
+
+    function DetailUser(e) {
+        e.preventDefault
+        $.ajax({
+            data: {
+                id: e
+            },
+            type: 'GET',
+            url: "/Admin/Users/Details",
+            async: true,
+            success: function (msg) {
+                //alert(msg);
+            }
+        });
+    };
+
+
+    function OrderDetailForeach(e) {
+        alert("abc");
+        alert(e);
+    };
+
+</script>

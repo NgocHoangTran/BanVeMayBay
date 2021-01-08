@@ -119,10 +119,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getChoNgoi" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getChoNgoi">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getChoNgoi_Result">
+          <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
+          <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getGia" />
+    <FunctionImportMapping FunctionImportName="getMonthTotal" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getMonthTotal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getMonthTotal_Result">
+          <ScalarProperty Name="Doanhthu" ColumnName="Doanhthu" />
+          <ScalarProperty Name="SoVe" ColumnName="SoVe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getNameSB" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getNameSB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getNameSB_Result">
+          <ScalarProperty Name="SBDi" ColumnName="SBDi" />
+          <ScalarProperty Name="SBDen" ColumnName="SBDen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getYearTotal" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getYearTotal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getYearTotal_Result">
+          <ScalarProperty Name="SoCB" ColumnName="SoCB" />
+          <ScalarProperty Name="Doanhthu" ColumnName="Doanhthu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="Insert_ChoNgoi" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.Insert_ChoNgoi" />
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_getGia" />
     <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_helpdiagramdefinition">
       <ResultMapping>
         <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.sp_helpdiagramdefinition_Result">
@@ -139,6 +173,22 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Owner" ColumnName="Owner" />
           <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Login" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_Login">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.sp_Login_Result">
+          <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+          <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Gmail" ColumnName="Gmail" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="ID_Quyen" ColumnName="ID_Quyen" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

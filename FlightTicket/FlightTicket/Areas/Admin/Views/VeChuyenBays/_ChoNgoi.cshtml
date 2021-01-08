@@ -1,0 +1,15 @@
+﻿
+
+
+<select name="selector" id="selector" class="form-control">
+    @if (ViewBag.MaGhe != null)
+    {
+        foreach (var item in ViewBag.MaGhe)
+        {
+            <option value="@item.MaGhe">@item.SoGhe</option>
+        }
+    }
+
+</select>
+
+@*@Html.DropDownListFor(model => model.MaGhe, (SelectList)ViewBag.MaGhe, "Select one", htmlAttributes: new { @class = "form-control" })*@
