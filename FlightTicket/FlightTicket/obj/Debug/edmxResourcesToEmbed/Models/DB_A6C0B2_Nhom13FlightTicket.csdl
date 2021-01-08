@@ -36,10 +36,10 @@
     <Property Name="SanBayDi" Type="Int32" />
     <Property Name="NgayGioKhoiHanh" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ThoiGianBay" Type="Int32" Nullable="false" />
-    <Property Name="ThoiGianBayToiThieu" Type="Int32" Nullable="false" />
+    <Property Name="ThoiGianBayToiThieu" Type="Int32" />
     <Property Name="NgayDatChamNhat" Type="Int32" Nullable="false" />
     <Property Name="NgayHuyChamNhat" Type="Int32" Nullable="false" />
-    <Property Name="SoGheConLai" Type="Int32" Nullable="false" />
+    <Property Name="SoGheConLai" Type="Int32" />
     <NavigationProperty Name="ChiTietChuyenBays" Relationship="Self.FK__ChiTietChu__MaCB__36B12243" FromRole="ChuyenBay" ToRole="ChiTietChuyenBay" />
     <NavigationProperty Name="ChoNgois" Relationship="Self.FK__ChoNgoi__MaCB__76969D2E" FromRole="ChuyenBay" ToRole="ChoNgoi" />
     <NavigationProperty Name="SanBay" Relationship="Self.FK__ChuyenBay__SanBa__276EDEB3" FromRole="ChuyenBay" ToRole="SanBay" />
@@ -355,6 +355,15 @@
       <End Role="NguoiDung" EntitySet="NguoiDungs" />
       <End Role="VeChuyenBay" EntitySet="VeChuyenBays" />
     </AssociationSet>
+    <FunctionImport Name="getChoNgoi" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.getChoNgoi_Result)">
+      <Parameter Name="SBDi" Mode="In" Type="Int32" />
+      <Parameter Name="SBDen" Mode="In" Type="Int32" />
+      <Parameter Name="HangVe" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getGia" ReturnType="Collection(Int32)">
+      <Parameter Name="MaCB" Mode="In" Type="Int32" />
+      <Parameter Name="MaHV" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="getMonthTotal" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.getMonthTotal_Result)">
       <Parameter Name="date" Mode="In" Type="DateTime" />
       <Parameter Name="MaCB" Mode="In" Type="Int32" />
@@ -383,6 +392,11 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_getGia" ReturnType="Collection(Int32)">
+      <Parameter Name="SBDi" Mode="In" Type="Int32" />
+      <Parameter Name="SBDen" Mode="In" Type="Int32" />
+      <Parameter Name="HangVe" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.sp_helpdiagramdefinition_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -391,27 +405,21 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="sp_Login" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.sp_Login_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="sp_renamediagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <FunctionImport Name="getGia" ReturnType="Collection(Int32)">
-      <Parameter Name="MaCB" Mode="In" Type="Int32" />
-      <Parameter Name="MaHV" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="getChoNgoi" ReturnType="Collection(Int32)">
-      <Parameter Name="SBDi" Mode="In" Type="Int32" />
-      <Parameter Name="SBDen" Mode="In" Type="Int32" />
-      <Parameter Name="HangVe" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="sp_getGia" ReturnType="Collection(Int32)">
-      <Parameter Name="SBDi" Mode="In" Type="Int32" />
-      <Parameter Name="SBDen" Mode="In" Type="Int32" />
-      <Parameter Name="HangVe" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="getChoNgoi_Result">
+    <Property Type="Int32" Name="MaGhe" Nullable="false" />
+    <Property Type="Int32" Name="SoGhe" Nullable="true" />
+  </ComplexType>
   <ComplexType Name="getMonthTotal_Result">
     <Property Type="Int32" Name="Doanhthu" Nullable="true" />
     <Property Type="Int32" Name="SoVe" Nullable="true" />
@@ -434,5 +442,17 @@
     <Property Type="Int32" Name="ID" Nullable="false" />
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_Login_Result">
+    <Property Type="Int32" Name="MaNguoiDung" Nullable="false" />
+    <Property Type="String" Name="TaiKhoan" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MatKhau" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="HoTen" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Gmail" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SoDT" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="CMND" Nullable="false" MaxLength="9" />
+    <Property Type="Int32" Name="ID_Quyen" Nullable="true" />
+    <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NgaySinh" Nullable="true" />
   </ComplexType>
 </Schema>

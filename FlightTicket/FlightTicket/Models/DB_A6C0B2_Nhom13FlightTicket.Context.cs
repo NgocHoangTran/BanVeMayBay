@@ -39,6 +39,36 @@ namespace FlightTicket.Models
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<VeChuyenBay> VeChuyenBays { get; set; }
     
+        public virtual ObjectResult<getChoNgoi_Result> getChoNgoi(Nullable<int> sBDi, Nullable<int> sBDen, Nullable<int> hangVe)
+        {
+            var sBDiParameter = sBDi.HasValue ?
+                new ObjectParameter("SBDi", sBDi) :
+                new ObjectParameter("SBDi", typeof(int));
+    
+            var sBDenParameter = sBDen.HasValue ?
+                new ObjectParameter("SBDen", sBDen) :
+                new ObjectParameter("SBDen", typeof(int));
+    
+            var hangVeParameter = hangVe.HasValue ?
+                new ObjectParameter("HangVe", hangVe) :
+                new ObjectParameter("HangVe", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getChoNgoi_Result>("getChoNgoi", sBDiParameter, sBDenParameter, hangVeParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> getGia(Nullable<int> maCB, Nullable<int> maHV)
+        {
+            var maCBParameter = maCB.HasValue ?
+                new ObjectParameter("MaCB", maCB) :
+                new ObjectParameter("MaCB", typeof(int));
+    
+            var maHVParameter = maHV.HasValue ?
+                new ObjectParameter("MaHV", maHV) :
+                new ObjectParameter("MaHV", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getGia", maCBParameter, maHVParameter);
+        }
+    
         public virtual ObjectResult<getMonthTotal_Result> getMonthTotal(Nullable<System.DateTime> date, Nullable<int> maCB)
         {
             var dateParameter = date.HasValue ?
@@ -134,6 +164,23 @@ namespace FlightTicket.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> sp_getGia(Nullable<int> sBDi, Nullable<int> sBDen, Nullable<int> hangVe)
+        {
+            var sBDiParameter = sBDi.HasValue ?
+                new ObjectParameter("SBDi", sBDi) :
+                new ObjectParameter("SBDi", typeof(int));
+    
+            var sBDenParameter = sBDen.HasValue ?
+                new ObjectParameter("SBDen", sBDen) :
+                new ObjectParameter("SBDen", typeof(int));
+    
+            var hangVeParameter = hangVe.HasValue ?
+                new ObjectParameter("HangVe", hangVe) :
+                new ObjectParameter("HangVe", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_getGia", sBDiParameter, sBDenParameter, hangVeParameter);
+        }
+    
         public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
         {
             var diagramnameParameter = diagramname != null ?
@@ -160,6 +207,19 @@ namespace FlightTicket.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
         }
     
+        public virtual ObjectResult<sp_Login_Result> sp_Login(string email, string pass)
+        {
+            var emailParameter = email != null ?
+                new ObjectParameter("email", email) :
+                new ObjectParameter("email", typeof(string));
+    
+            var passParameter = pass != null ?
+                new ObjectParameter("pass", pass) :
+                new ObjectParameter("pass", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Login_Result>("sp_Login", emailParameter, passParameter);
+        }
+    
         public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
         {
             var diagramnameParameter = diagramname != null ?
@@ -180,53 +240,6 @@ namespace FlightTicket.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<Nullable<int>> getGia(Nullable<int> maCB, Nullable<int> maHV)
-        {
-            var maCBParameter = maCB.HasValue ?
-                new ObjectParameter("MaCB", maCB) :
-                new ObjectParameter("MaCB", typeof(int));
-    
-            var maHVParameter = maHV.HasValue ?
-                new ObjectParameter("MaHV", maHV) :
-                new ObjectParameter("MaHV", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getGia", maCBParameter, maHVParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> getChoNgoi(Nullable<int> sBDi, Nullable<int> sBDen, Nullable<int> hangVe)
-        {
-            var sBDiParameter = sBDi.HasValue ?
-                new ObjectParameter("SBDi", sBDi) :
-                new ObjectParameter("SBDi", typeof(int));
-    
-            var sBDenParameter = sBDen.HasValue ?
-                new ObjectParameter("SBDen", sBDen) :
-                new ObjectParameter("SBDen", typeof(int));
-    
-            var hangVeParameter = hangVe.HasValue ?
-                new ObjectParameter("HangVe", hangVe) :
-                new ObjectParameter("HangVe", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("getChoNgoi", sBDiParameter, sBDenParameter, hangVeParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<int>> sp_getGia(Nullable<int> sBDi, Nullable<int> sBDen, Nullable<int> hangVe)
-        {
-            var sBDiParameter = sBDi.HasValue ?
-                new ObjectParameter("SBDi", sBDi) :
-                new ObjectParameter("SBDi", typeof(int));
-    
-            var sBDenParameter = sBDen.HasValue ?
-                new ObjectParameter("SBDen", sBDen) :
-                new ObjectParameter("SBDen", typeof(int));
-    
-            var hangVeParameter = hangVe.HasValue ?
-                new ObjectParameter("HangVe", hangVe) :
-                new ObjectParameter("HangVe", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("sp_getGia", sBDiParameter, sBDenParameter, hangVeParameter);
         }
     }
 }

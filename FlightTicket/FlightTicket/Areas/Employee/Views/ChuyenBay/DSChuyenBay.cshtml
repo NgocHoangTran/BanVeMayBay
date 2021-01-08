@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                         @foreach (var item in ViewBag.dscb)
-                        {
+                         {
                         <tr>
                             <td>@item.SanBayDi</td>
                             <td>@item.SanBayDen</td>
@@ -39,7 +39,7 @@
                                 <button style='margin-right:16px' class="btn btn-dark">@Html.ActionLink("Vé chuyến bay", "VeChuyenBay", new { id = item.MaCB })</button>
                             </td>
                         </tr>
-                        }
+                         }
                     </tbody>
                 </table>
             </div>

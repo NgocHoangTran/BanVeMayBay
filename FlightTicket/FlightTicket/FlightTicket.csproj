@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -59,7 +62,16 @@
     <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Syncfusion.Compression.Base, Version=18.4460.0.32, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.18.4.0.32\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=18.4460.0.32, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.4.0.32\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -201,6 +213,9 @@
     <Compile Include="Models\DSDonGia.cs" />
     <Compile Include="Models\DSVeCB.cs" />
     <Compile Include="Models\getChoNgoi.cs" />
+    <Compile Include="Models\getChoNgoi_Result.cs">
+      <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\getMonthTotal_Result.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
@@ -216,6 +231,7 @@
     <Compile Include="Models\HangVeCuaChuyenBay.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LayVeCuaND.cs" />
     <Compile Include="Models\NguoiDung.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
@@ -229,6 +245,9 @@
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_Login_Result.cs">
       <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
@@ -3963,6 +3982,7 @@
     <Content Include="Areas\Employee\assets\img\error-404-monochrome.svg" />
     <Content Include="Areas\Employee\css\loginEmployee.css" />
     <Content Include="Areas\Employee\css\styles.css" />
+    <Content Include="Areas\Employee\images\GheNGoi.png" />
     <Content Include="Areas\Employee\images\img_avatar2.png" />
     <Content Include="Areas\Employee\js\datatables-demo.js" />
     <Content Include="Areas\Employee\js\scripts.js" />
@@ -3997,13 +4017,8 @@
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Reveneu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Reveneu\ReveneuChart.cshtml" />
-    <EntityDeploy Include="Models\DB_A6C0B2_Nhom13FlightTicket.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DB_A6C0B2_Nhom13FlightTicket.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\DB_A6C0B2_Nhom13FlightTicket.edmx.diagram">
-      <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.edmx</DependentUpon>
-    </Content>
+    <Content Include="Areas\Employee\Views\ChuyenBay\DSChuyenBay.cshtml" />
+    <Content Include="Areas\Employee\Views\ChuyenBay\VeChuyenBay.cshtml" />
     <Content Include="Areas\Admin\Assets\vendors\animate.css\.bower.json" />
     <Content Include="Areas\Admin\Assets\vendors\animate.css\animate-config.json" />
     <Content Include="Areas\Admin\Assets\vendors\animate.css\bower.json" />
@@ -5090,6 +5105,13 @@
     <Content Include="Areas\Admin\Views\ChoNgois\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ChoNgois\_EditCN.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <EntityDeploy Include="Models\DB_A6C0B2_Nhom13FlightTicket.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB_A6C0B2_Nhom13FlightTicket.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB_A6C0B2_Nhom13FlightTicket.edmx.diagram">
+      <DependentUpon>DB_A6C0B2_Nhom13FlightTicket.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

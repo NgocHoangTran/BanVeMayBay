@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DB_A6C0B2_Nhom13FlightTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DB_A6C0B2_Nhom13FlightTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiTietChuyenBay">
           <Key>
             <PropertyRef Name="MaCB" />
@@ -36,10 +36,10 @@
           <Property Name="SanBayDi" Type="int" />
           <Property Name="NgayGioKhoiHanh" Type="datetime" Nullable="false" />
           <Property Name="ThoiGianBay" Type="int" Nullable="false" />
-          <Property Name="ThoiGianBayToiThieu" Type="int" Nullable="false" />
+          <Property Name="ThoiGianBayToiThieu" Type="int" />
           <Property Name="NgayDatChamNhat" Type="int" Nullable="false" />
           <Property Name="NgayHuyChamNhat" Type="int" Nullable="false" />
-          <Property Name="SoGheConLai" Type="int" Nullable="false" />
+          <Property Name="SoGheConLai" Type="int" />
         </EntityType>
         <EntityType Name="DonGia">
           <Key>
@@ -292,6 +292,9 @@
           <Parameter Name="month" Type="int" Mode="In" />
         </Function>
         <Function Name="Insert_ChoNgoi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MaHoaMD5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="pass" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -320,6 +323,10 @@
         <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="email" Type="nvarchar" Mode="In" />
+          <Parameter Name="pass" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -392,7 +399,8 @@
             <End Role="VeChuyenBay" EntitySet="VeChuyenBay" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_A6C0B2_Nhom13FlightTicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -432,10 +440,10 @@
           <Property Name="SanBayDi" Type="Int32" />
           <Property Name="NgayGioKhoiHanh" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ThoiGianBay" Type="Int32" Nullable="false" />
-          <Property Name="ThoiGianBayToiThieu" Type="Int32" Nullable="false" />
+          <Property Name="ThoiGianBayToiThieu" Type="Int32" />
           <Property Name="NgayDatChamNhat" Type="Int32" Nullable="false" />
           <Property Name="NgayHuyChamNhat" Type="Int32" Nullable="false" />
-          <Property Name="SoGheConLai" Type="Int32" Nullable="false" />
+          <Property Name="SoGheConLai" Type="Int32" />
           <NavigationProperty Name="ChiTietChuyenBays" Relationship="Self.FK__ChiTietChu__MaCB__36B12243" FromRole="ChuyenBay" ToRole="ChiTietChuyenBay" />
           <NavigationProperty Name="ChoNgois" Relationship="Self.FK__ChoNgoi__MaCB__76969D2E" FromRole="ChuyenBay" ToRole="ChoNgoi" />
           <NavigationProperty Name="SanBay" Relationship="Self.FK__ChuyenBay__SanBa__276EDEB3" FromRole="ChuyenBay" ToRole="SanBay" />
@@ -751,12 +759,21 @@
             <End Role="NguoiDung" EntitySet="NguoiDungs" />
             <End Role="VeChuyenBay" EntitySet="VeChuyenBays" />
           </AssociationSet>
+          <FunctionImport Name="getChoNgoi" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.getChoNgoi_Result)">
+            <Parameter Name="SBDi" Mode="In" Type="Int32" />
+            <Parameter Name="SBDen" Mode="In" Type="Int32" />
+            <Parameter Name="HangVe" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="getGia" ReturnType="Collection(Int32)">
+            <Parameter Name="MaCB" Mode="In" Type="Int32" />
+            <Parameter Name="MaHV" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="getMonthTotal" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.getMonthTotal_Result)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
             <Parameter Name="MaCB" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getNameSB" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.getNameSB_Result)">
-          <Parameter Name="MaCB" Mode="In" Type="Int32" />
+            <Parameter Name="MaCB" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="getYearTotal" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.getYearTotal_Result)">
             <Parameter Name="date" Mode="In" Type="DateTime" />
@@ -779,6 +796,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_getGia" ReturnType="Collection(Int32)">
+            <Parameter Name="SBDi" Mode="In" Type="Int32" />
+            <Parameter Name="SBDen" Mode="In" Type="Int32" />
+            <Parameter Name="HangVe" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -787,27 +809,21 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_Login" ReturnType="Collection(DB_A6C0B2_Nhom13FlightTicketModel.sp_Login_Result)">
+            <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="pass" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="getGia" ReturnType="Collection(Int32)">
-            <Parameter Name="MaCB" Mode="In" Type="Int32" />
-            <Parameter Name="MaHV" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="getChoNgoi" ReturnType="Collection(Int32)">
-            <Parameter Name="SBDi" Mode="In" Type="Int32" />
-            <Parameter Name="SBDen" Mode="In" Type="Int32" />
-            <Parameter Name="HangVe" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_getGia" ReturnType="Collection(Int32)">
-            <Parameter Name="SBDi" Mode="In" Type="Int32" />
-            <Parameter Name="SBDen" Mode="In" Type="Int32" />
-            <Parameter Name="HangVe" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="getChoNgoi_Result">
+          <Property Type="Int32" Name="MaGhe" Nullable="false" />
+          <Property Type="Int32" Name="SoGhe" Nullable="true" />
+        </ComplexType>
         <ComplexType Name="getMonthTotal_Result">
           <Property Type="Int32" Name="Doanhthu" Nullable="true" />
           <Property Type="Int32" Name="SoVe" Nullable="true" />
@@ -830,6 +846,18 @@
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_Login_Result">
+          <Property Type="Int32" Name="MaNguoiDung" Nullable="false" />
+          <Property Type="String" Name="TaiKhoan" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="MatKhau" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="HoTen" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Gmail" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SoDT" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="CMND" Nullable="false" MaxLength="9" />
+          <Property Type="Int32" Name="ID_Quyen" Nullable="true" />
+          <Property Type="String" Name="DiaChi" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="NgaySinh" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -955,6 +983,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getChoNgoi" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getChoNgoi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getChoNgoi_Result">
+                <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
+                <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getGia" />
           <FunctionImportMapping FunctionImportName="getMonthTotal" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getMonthTotal">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getMonthTotal_Result">
@@ -983,6 +1020,7 @@
           <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_alterdiagram" />
           <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_creatediagram" />
           <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_getGia" />
           <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_helpdiagramdefinition">
             <ResultMapping>
               <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.sp_helpdiagramdefinition_Result">
@@ -1002,11 +1040,24 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Login" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_Login">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.sp_Login_Result">
+                <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="Gmail" ColumnName="Gmail" />
+                <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+                <ScalarProperty Name="CMND" ColumnName="CMND" />
+                <ScalarProperty Name="ID_Quyen" ColumnName="ID_Quyen" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getGia" />
-          <FunctionImportMapping FunctionImportName="getChoNgoi" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getChoNgoi" />
-          <FunctionImportMapping FunctionImportName="sp_getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_getGia" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

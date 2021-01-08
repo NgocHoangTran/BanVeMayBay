@@ -1,0 +1,85 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+
+        .table-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #333;
+            height: 50px;
+            width: 1000px;
+            font-size: 20px;
+        }
+
+        .span1 {
+            border-right: 2px solid black;
+            margin: 20px;
+            padding-right: 30px;
+        }
+
+        .span2 {
+            margin-left: 200px;
+        }
+
+        .th {
+            background-color: black;
+            color: #fff;
+            font-size: 25px;
+            font-weight: 500;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="table-center">
+        <table>
+            <tr>
+                <td colspan="2" class="th"><span class="span2">Vé chuyến bay</span></td>
+            </tr>
+            <tr>
+                <td>Chuyến bay:     @Model.MaCB </td>
+                <td>Hành khách:     @Model.HoTen</td>
+                
+            </tr>
+            <tr>
+                <td> CMND:      @Model.CMND</td>
+                <td> Điện thoại:        @Model.SDT</td>
+            </tr>
+            <tr>
+                <td>Hạng vé:        @Model.HangVe</td>
+                <td>Giá tiền:       @Model.giatien</td>
+            </tr>
+        </table>
+        <style type="text/css">
+        @@media print {
+            #printbtn {
+            display :  none;
+            }
+         }
+        </style>
+        <input id="printbtn" type="button" value="Xuất vé"  onclick="window.print();">
+    </div>
+</body>
+</html>
