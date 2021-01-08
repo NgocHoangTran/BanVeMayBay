@@ -17,6 +17,7 @@
       <EntityTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.ChoNgoi">
         <MappingFragment StoreEntitySet="ChoNgoi">
           <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
+          <ScalarProperty Name="SoGhe" ColumnName="SoGhe" />
           <ScalarProperty Name="MaCB" ColumnName="MaCB" />
           <ScalarProperty Name="MaHangVe" ColumnName="MaHangVe" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
@@ -112,13 +113,37 @@
       <EntityTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.VeChuyenBay">
         <MappingFragment StoreEntitySet="VeChuyenBay">
           <ScalarProperty Name="MaVeCB" ColumnName="MaVeCB" />
-          <ScalarProperty Name="MaCB" ColumnName="MaCB" />
-          <ScalarProperty Name="MaVe" ColumnName="MaVe" />
           <ScalarProperty Name="MaNguoiDung" ColumnName="MaNguoiDung" />
           <ScalarProperty Name="NgayDat" ColumnName="NgayDat" />
+          <ScalarProperty Name="MaGhe" ColumnName="MaGhe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="getMonthTotal" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getMonthTotal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getMonthTotal_Result">
+          <ScalarProperty Name="Doanhthu" ColumnName="Doanhthu" />
+          <ScalarProperty Name="SoVe" ColumnName="SoVe" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getNameSB" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getNameSB">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getNameSB_Result">
+          <ScalarProperty Name="SBDi" ColumnName="SBDi" />
+          <ScalarProperty Name="SBDen" ColumnName="SBDen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="getYearTotal" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getYearTotal">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DB_A6C0B2_Nhom13FlightTicketModel.getYearTotal_Result">
+          <ScalarProperty Name="SoCB" ColumnName="SoCB" />
+          <ScalarProperty Name="Doanhthu" ColumnName="Doanhthu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Insert_ChoNgoi" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.Insert_ChoNgoi" />
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_dropdiagram" />
@@ -143,5 +168,8 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getGia" />
+    <FunctionImportMapping FunctionImportName="getChoNgoi" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.getChoNgoi" />
+    <FunctionImportMapping FunctionImportName="sp_getGia" FunctionName="DB_A6C0B2_Nhom13FlightTicketModel.Store.sp_getGia" />
   </EntityContainerMapping>
 </Mapping>

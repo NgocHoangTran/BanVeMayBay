@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FlightTicket.Models.NguoiDung>
+
+@{
+    Layout = null;
+}
+
+
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h4 class="modal-title">Edit user</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    @using (Html.BeginForm("Edit", "Nguoidungs", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <input type="text" id="addUsername" class="form-control bg-gray-200" name="MaNguoiDung" readonly value="@ViewBag.user.MaNguoiDung" style="display: none">
+        </div>
+        <div class="form-group">
+            <input type="password" id="addUsername" class="form-control bg-gray-200" name="MatKhau" readonly value="@ViewBag.user.MatKhau" style="display: none">
+        </div>
+        <div class="form-group">
+            <label asp-for="addUsername">UserName :</label>
+            <input type="text" id="addUsername" class="form-control bg-gray-200" name="TaiKhoan" readonly value="@ViewBag.user.TaiKhoan">
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="addEmail">Email :</label>
+            <input type="email" id="addEmail" class="form-control" name="Gmail" value="@ViewBag.user.Gmail">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="addName">Họ tên :</label>
+            <input type="text" id="addName" class="form-control" name="HoTen" value="@ViewBag.user.HoTen">
+        </div>
+        <div class="form-group">
+            <label for="addPhone">Số điện thoại :</label>
+            <input type="tel" id="addPhone" class="form-control" name="SoDT" value="@ViewBag.user.SoDT">
+        </div>
+        <div class="form-group">
+            <label for="addPhone">Số CMND :</label>
+            <input type="tel" id="addCMND" class="form-control" name="CMND" value="@ViewBag.user.CMND">
+        </div>
+        <div class="form-group">
+            <label for="addAddress">Địa chỉ :</label>
+            <input type="text" id="addAddress" class="form-control" name="DiaChi" value="@ViewBag.user.DiaChi">
+        </div>
+
+        
+        <div class="form-group">
+                
+                <input type="date" class="form-control" id="addDOB" name="NgaySinh" value="@ViewBag.birthday.ToString("yyyy-MM-dd")" >
+            </div>
+        <div class="form-group">
+                
+                <input type="text" name="ID_Quyen" id="addRole" class="form-control bg-gray-200" value="@ViewBag.user.ID_Quyen" readonly style="display: none">
+                   
+                
+            </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    }
+</div>

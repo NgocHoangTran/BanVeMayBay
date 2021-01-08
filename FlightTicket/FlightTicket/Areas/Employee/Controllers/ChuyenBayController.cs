@@ -18,12 +18,12 @@ namespace FlightTicket.Areas.Employee.Controllers
             ViewBag.dscb = dscb;
             return View();
         }
-        public ActionResult VeChuyenBay(int ID)
-        {
-            List<DanhSachVeChuyenBay> dsvcb = new List<DanhSachVeChuyenBay>();
-            dsvcb = ChuyenBayQuery.danhSachVeChuyenBays();
-            ViewBag.dsvcb = dsvcb;
-            return View();
-        }
+        //public ActionResult VeChuyenBay(int ID)
+        //{
+        //    List<DanhSachVeChuyenBay> dsvcb = new List<DanhSachVeChuyenBay>();
+        //    dsvcb = ChuyenBayQuery.danhSachVeChuyenBays();
+        //    ViewBag.dsvcb = dsvcb;
+        //    return View();
+        //}
     }
 }

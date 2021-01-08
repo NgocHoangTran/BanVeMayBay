@@ -19,19 +19,19 @@ namespace FlightTicket.Areas.Employee.EmployeeQuery
                 return dbdscb;
             }
         }
-        public static List<DanhSachVeChuyenBay> danhSachVeChuyenBays()
-        {
-            using (var _context= new DB_A6C0B2_Nhom13FlightTicketEntities())
-            {
-                var dbdsvcb = (from nguoidung in _context.NguoiDungs
-                               join vechuyenbay in _context.VeChuyenBays on nguoidung.MaNguoiDung equals vechuyenbay.MaNguoiDung
-                               join chuyenbay in _context.ChuyenBays on vechuyenbay.MaCB equals chuyenbay.MaCB
-                               join hangve in _context.HangVes on vechuyenbay.MaVe equals hangve.MaHangVe
-                               join dongia in _context.DonGias on hangve.MaHangVe equals dongia.MaHangVe
-                               where dongia.MaCB == chuyenbay.MaCB
-                               select new DanhSachVeChuyenBay {MaCB=chuyenbay.MaCB, HoTen=nguoidung.HoTen, SoDienThoai=nguoidung.SoDT, CMND=nguoidung.CMND, HangVe=hangve.TenHangVe, GiaTien=dongia.Gia}).ToList();
-                return dbdsvcb;
-            }
-        }
+        //public static List<DanhSachVeChuyenBay> danhSachVeChuyenBays()
+        //{
+        //    using (var _context= new DB_A6C0B2_Nhom13FlightTicketEntities())
+        //    {
+        //        var dbdsvcb = (from nguoidung in _context.NguoiDungs
+        //                       join vechuyenbay in _context.VeChuyenBays on nguoidung.MaNguoiDung equals vechuyenbay.MaNguoiDung
+        //                       join chuyenbay in _context.ChuyenBays on vechuyenbay.MaCB equals chuyenbay.MaCB
+        //                       join hangve in _context.HangVes on vechuyenbay.MaVe equals hangve.MaHangVe
+        //                       join dongia in _context.DonGias on hangve.MaHangVe equals dongia.MaHangVe
+        //                       where dongia.MaCB == chuyenbay.MaCB
+        //                       select new DanhSachVeChuyenBay {MaCB=chuyenbay.MaCB, HoTen=nguoidung.HoTen, SoDienThoai=nguoidung.SoDT, CMND=nguoidung.CMND, HangVe=hangve.TenHangVe, GiaTien=dongia.Gia}).ToList();
+        //        return dbdsvcb;
+        //    }
+        //}
     }
 }

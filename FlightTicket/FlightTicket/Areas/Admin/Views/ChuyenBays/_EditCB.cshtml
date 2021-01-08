@@ -1,0 +1,63 @@
+﻿@model FlightTicket.Models.ChuyenBay
+
+@{
+    Layout = null;
+}
+
+
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h4 class="modal-title">Sửa chuyến bay</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    @using (Html.BeginForm("Edit", "Chuyenbays", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+
+            <input type="number" id="MaCB" class="form-control bg-gray-200" name="MaCB" readonly value="@Model.MaCB">
+
+        </div>
+
+        <div class="form-group">
+            <label for="addName">Sân bay đi :</label>
+            @Html.DropDownListFor(model => model.SanBay1.MaSB, (SelectList)ViewBag.SanBayDi, htmlAttributes: new { @class = "form-control", @id = "SanBayDi" })
+        </div>
+        <div class="form-group">
+            <label for="addName">Sân bay đến :</label>
+            @Html.DropDownListFor(model => model.SanBay.MaSB, (SelectList)ViewBag.SanBayDen, htmlAttributes: new { @class = "form-control", @id = "SanBayDen" })
+        </div>
+
+        <div class="form-group">
+            <label for="addName">Thời gian khởi hành :</label>
+            <input type="date" id="ThoiGianKhoiHanh" class="form-control" name="NgayGioKhoiHanh" value="@Model.NgayGioKhoiHanh.ToString("yyyy-MM-dd")">
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Thời gian bay :</label>
+            <input type="number" id="ThoiGianBay" class="form-control" name="ThoiGianBay" value="@Model.ThoiGianBay">
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Ngày đặt vé chậm nhất :</label>
+            <input type="number" id="NgayDatChamNhat" class="form-control" name="NgayDatChamNhat" value="@Model.NgayDatChamNhat">
+
+        </div>
+        <div class="form-group">
+            <label for="addName">Ngày hủy vé chậm nhất :</label>
+            <input type="number" id="NgayHuyChamNhat" class="form-control" name="NgayHuyChamNhat" value="@Model.NgayHuyChamNhat">
+
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    }
+</div>
+
+
+
+
