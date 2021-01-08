@@ -87,6 +87,7 @@ E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicke
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.dll
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.pdb
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csprojAssemblyReference.cache
+D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\EntityFramework.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\FlightTicket.dll.config
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\FlightTicket.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\FlightTicket.pdb
@@ -141,7 +142,6 @@ D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\roslyn\VBCSCompiler.exe
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\roslyn\VBCSCompiler.exe.config
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\Antlr3.Runtime.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\BouncyCastle.Crypto.dll
-D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\EntityFramework.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\EntityFramework.SqlServer.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\itextsharp.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\Microsoft.AspNet.Identity.Core.dll
@@ -181,8 +181,8 @@ D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Net.Http.Formatting.xml
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.Http.xml
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.Http.WebHost.xml
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csprojAssemblyReference.cache
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.CoreCompileInputs.cache
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.CopyComplete
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.pdb
-D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csprojAssemblyReference.cache
