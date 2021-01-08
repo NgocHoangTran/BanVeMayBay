@@ -28,10 +28,10 @@ namespace FlightTicket.Models
         public Nullable<int> SanBayDi { get; set; }
         public System.DateTime NgayGioKhoiHanh { get; set; }
         public int ThoiGianBay { get; set; }
-        public int ThoiGianBayToiThieu { get; set; }
+        public Nullable<int> ThoiGianBayToiThieu { get; set; }
         public int NgayDatChamNhat { get; set; }
         public int NgayHuyChamNhat { get; set; }
-        public int SoGheConLai { get; set; }
+        public Nullable<int> SoGheConLai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietChuyenBay> ChiTietChuyenBays { get; set; }

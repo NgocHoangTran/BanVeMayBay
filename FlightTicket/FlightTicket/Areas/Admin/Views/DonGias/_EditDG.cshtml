@@ -1,0 +1,50 @@
+﻿@model FlightTicket.Models.DonGia
+
+@{
+    Layout = null;
+}
+
+
+
+<!-- Modal Header -->
+<div class="modal-header">
+    <h4 class="modal-title">Sửa đơn giá</h4>
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div>
+
+<!-- Modal body -->
+<div class="modal-body">
+    @using (Html.BeginForm("Edit", "DonGias", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+
+            <input type="text" id="MaDonGia" class="form-control bg-gray-200" name="MaDonGia" readonly value="@Model.MaDonGia" style="display:none">
+
+        </div>
+
+        <div class="form-group">
+            <label for="addName">Sân bay đi :</label>
+            @Html.DropDownListFor(model => model.ChuyenBay.SanBayDi, (SelectList)ViewBag.SanBayDi, htmlAttributes: new { @class = "form-control", @id = "SanBayDi" })
+        </div>
+        <div class="form-group">
+            <label for="addName">Sân bay đến :</label>
+            @Html.DropDownListFor(model => model.ChuyenBay.SanBayDen, (SelectList)ViewBag.SanBayDen, htmlAttributes: new { @class = "form-control", @id = "SanBayDen" })
+        </div>
+        <div class="form-group">
+            <label for="addName">Hạng vé :</label>
+            @Html.DropDownListFor(model => model.MaHangVe, (SelectList)ViewBag.HangVe, htmlAttributes: new { @class = "form-control", @id = "HangVe" })
+        </div>
+        <div class="form-group">
+            <label for="addName">Giá :</label>
+            <input type="tel" id="Gia" class="form-control" name="Gia" value="@Model.Gia">
+
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    }
+</div>
+
+
+
