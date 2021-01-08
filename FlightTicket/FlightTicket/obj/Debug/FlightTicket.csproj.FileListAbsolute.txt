@@ -185,3 +185,4 @@ D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.Core
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.CopyComplete
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.pdb
+D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csprojAssemblyReference.cache
