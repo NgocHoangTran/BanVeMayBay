@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sach Chuyen Bay</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Ma CB</th>
+            <th scope="col">Noi di</th>
+            <th scope="col">Noi den</th>
+            <th scope="col">Thoi Gian</th>
+            <th scope="col">Hang Ve</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.lstCbay)
+        {
+            <tr>
+                <td>@item.MaCB</td>
+                <td>@item.SanBay.TenSB</td>
+                <td>@item.SanBay1.TenSB</td>
+                <td>@item.NgayGioKhoiHanh</td>
+                <td>
+                    @Html.DropDownList("lstHangVe", null, htmlAttributes: new { @class = "form-control", id = item.MaCB })
+                </td>
+                <td>
+                    <input type="button" class="btn btn-primary" name="name" id="btn_@item.MaCB" value="Dat ve" />
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".btn").click(function (e) {
+                var idCB = ($(this).attr('id')).substr(-1, 4);
+                var hangVe = $('#' + idCB + ' :selected').val();
+                $.ajax({
+                    url: '/BookTicket01/SelectFlight',
+                    data: { idCB: idCB, hangVe: hangVe },
+                    success: function (res) {
+                        if (res == "Tre han") {
+                            alert("Chuyen bay da qua han de dat ve");
+                        }
+                        else if (res == "Error") {
+                            alert("Ban phai dang nhap");
+                        }
+                        else {
+                            window.location = "/BookTicket01/Form";
+                        }
+                    }
+                })
+            })
+        });
+    </script>
+}
+

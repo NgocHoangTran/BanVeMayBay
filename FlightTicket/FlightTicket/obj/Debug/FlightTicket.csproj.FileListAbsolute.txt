@@ -76,7 +76,6 @@ E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.Razor.
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.WebPages.xml
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.WebPages.Deployment.xml
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.WebPages.Razor.xml
-E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Newtonsoft.Json.xml
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Antlr3.Runtime.pdb
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Net.Http.Formatting.xml
 E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\System.Web.Http.xml
@@ -186,3 +185,15 @@ D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.Core
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.csproj.CopyComplete
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.dll
 D:\cnpm\BanVeMayBay\FlightTicket\FlightTicket\obj\Debug\FlightTicket.pdb
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\BouncyCastle.Crypto.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\itextsharp.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Syncfusion.Compression.Base.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Syncfusion.Licensing.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\itextsharp.xml
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\Syncfusion.Compression.Base.xml
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\PayPal.dll
+E:\Nam3\SortwareTech\BanVeMayBay\FlightTicket\FlightTicket\bin\PayPal.xml
